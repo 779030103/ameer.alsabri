@@ -1,13 +1,21 @@
 {
-    "name": "AMEER.SYS — Cyber Engineering",
-    "short_name": "AMEER.SYS",
-    "description": "Cybersecurity, Mechatronics and IT Engineering Portfolio",
-    "lang": "ar",
-    "dir": "rtl",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#02060b",
-    "theme_color": "#02060b",
-    "orientation": "portrait-primary",
-    "icons": []
+  "name": "AMEER.SYS — Cyber Engineering",
+  "short_name": "AMEER.SYS",
+  "description": "Cyber Engineering Portfolio — Cybersecurity × Mechatronics × IT",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/#home",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#02060b",
+  "theme_color": "#02060b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
