@@ -1,0 +1,108 @@
+:root {
+    --clr-bg: #03070c;
+    --clr-surface: #050a10;
+    --clr-primary: #00d4ff;
+    --clr-secondary: #00ff88;
+    --clr-text: #b0b0b0;
+    --clr-accent: #f43f5e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--clr-bg);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.cyber-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(5, 10, 16, 0.9);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-family: monospace;
+    color: var(--clr-primary);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.cyber-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.os-nav-item {
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--clr-text);
+    transition: 0.3s;
+    padding: 5px 10px;
+}
+
+.os-nav-item:hover, .os-nav-item.active {
+    color: var(--clr-primary);
+    text-shadow: 0 0 10px rgba(0,212,255,0.5);
+    border-bottom: 2px solid var(--clr-primary);
+}
+
+.header-status {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cyber-card {
+    background: var(--clr-surface);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 6px;
+    padding: 25px;
+    position: relative;
+}
+
+.glitch-active {
+    animation: glitchAnim 0.2s infinite;
+}
+
+@keyframes glitchAnim {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
