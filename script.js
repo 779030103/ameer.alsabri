@@ -1,135 +1,791 @@
-/**
- * CORE SYSTEM ENGINE - AMEER AL-SABRI
- * FULL INTEGRATED SYSTEM v15.0
- */
+(() => {
+    "use strict";
 
-(function() {
-    // 1. استدعاء مكتبة الأيقونات (Font Awesome) تلقائياً
-    const fontAwesome = document.createElement('link');
-    fontAwesome.rel = 'stylesheet';
-    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
-    document.head.appendChild(fontAwesome);
 
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        // --- 2. نظام التبويبات والتنقل (OS Navigation) ---
-        const navItems = document.querySelectorAll('.os-nav-item');
-        const sections = document.querySelectorAll('.tab-content');
+    /* =====================================================
+       DOM
+    ====================================================== */
 
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const target = this.getAttribute('data-target');
-                if(!target) return;
+    const nav = document.getElementById("main-nav");
+    const menuToggle = document.getElementById("menu-toggle");
 
-                navItems.forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
+    const sections = [
+        ...document.querySelectorAll(".page-section")
+    ];
 
-                sections.forEach(sec => {
-                    sec.style.display = 'none';
-                    sec.classList.remove('active');
-                    if(sec.id === target) {
-                        sec.style.display = 'block';
-                        sec.classList.add('active');
-                    }
-                });
+    const navLinks = [
+        ...document.querySelectorAll(".nav-link")
+    ];
+
+    const clock = document.getElementById("live-clock");
+
+    const commandPalette =
+        document.getElementById("command-palette");
+
+    const paletteInput =
+        document.getElementById("palette-input");
+
+    const paletteClose =
+        document.getElementById("palette-close");
+
+    const terminalForm =
+        document.getElementById("terminal-form");
+
+    const terminalInput =
+        document.getElementById("terminal-input");
+
+    const terminalOutput =
+        document.getElementById("terminal-output");
+
+    const systemLog =
+        document.getElementById("system-log");
+
+
+    /* =====================================================
+       CLOCK
+    ====================================================== */
+
+    function updateClock() {
+
+        if (!clock) return;
+
+        const now = new Date();
+
+        clock.textContent =
+            now.toLocaleTimeString("en-GB", {
+                hour12: false
             });
+    }
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+
+    /* =====================================================
+       NAVIGATION
+    ====================================================== */
+
+    function showSection(sectionId, updateHash = true) {
+
+        const target =
+            document.getElementById(sectionId);
+
+        if (!target) {
+            return;
+        }
+
+        sections.forEach(section => {
+            section.classList.toggle(
+                "active",
+                section.id === sectionId
+            );
         });
 
-        // --- 3. بناء الواجهة الرئيسية (Home Section) ---
-        const homeSection = document.querySelector('#home');
-        if (homeSection) {
-            homeSection.innerHTML = `
-                <div class="hero-container" style="display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 40px 0;">
-                    <div class="hero-content" style="flex: 1.2; text-align: right;">
-                        <div class="badge-tech" style="display: inline-block; padding: 5px 15px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--clr-primary); color: #00d4ff; font-size: 12px; letter-spacing: 2px; margin-bottom: 20px;">SYSTEM ARCHITECT // AVAILABLE</div>
-                        <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; margin-bottom: 15px;">أمير الدين الصبري</h1>
-                        <div class="spec-tags" style="display: flex; gap: 15px; margin-bottom: 25px; color: #00d4ff; font-size: 0.9rem;">
-                            <span><i class="fas fa-microchip"></i> Mechatronics</span>
-                            <span><i class="fas fa-shield-alt"></i> Cybersecurity</span>
-                            <span><i class="fas fa-server"></i> IT Expert</span>
-                        </div>
-                        <p style="font-size: 1.1rem; line-height: 1.8; color: #b0b0b0; max-width: 600px; margin-bottom: 35px;">
-                            دمج متطور بين الهندسة الميكانيكية والذكاء الرقمي. متخصص في بناء وحماية الأنظمة السيبرانية المادية المتقدمة وفق معايير NIST العالمية.
-                        </p>
-                        <button class="prime-btn" onclick="document.querySelector('[data-target=projects]').click()" style="background: transparent; border: 1px solid #00d4ff; color: #fff; padding: 12px 35px; cursor: pointer; transition: 0.3s;">
-                            استعراض المشاريع
-                        </button>
-                    </div>
+        navLinks.forEach(link => {
+            link.classList.toggle(
+                "active",
+                link.dataset.section === sectionId
+            );
+        });
 
-                    <div class="hero-visual" style="flex: 0.8; position: relative; display: flex; justify-content: center;">
-                        <div class="main-profile-frame" style="position: relative; width: 280px; height: 330px; background: #050a10; border: 1px solid rgba(0, 212, 255, 0.3); padding: 10px;">
-                            <img src="profile.jpg" alt="Ameer Al-Sabri" style="width: 100%; height: 100%; object-fit: cover;" 
-                                 onerror="this.src='https://cdn-icons-png.flaticon.com/512/6840/6840478.png'">
-                        </div>
-                    </div>
-                </div>
-            `;
+        if (updateHash) {
+            history.replaceState(
+                null,
+                "",
+                `#${sectionId}`
+            );
         }
 
-        // --- 4. بناء غرفة العمليات (Operations Center) ---
-        const opsSection = document.querySelector('#ops-center');
-        if (opsSection) {
-            opsSection.innerHTML = `
-                <div class="dashboard-wrapper">
-                    <h2 style="margin-bottom: 20px; border-right: 4px solid var(--clr-primary); padding-right: 15px;">OPERATIONS CONTROL CENTER</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                        <div class="cyber-card">
-                            <h4><i class="fas fa-microchip"></i> CPU LOAD</h4>
-                            <p id="cpu-val" style="font-family: monospace; font-size: 24px; color: var(--clr-primary); margin-top: 10px;">14%</p>
-                        </div>
-                        <div class="cyber-card">
-                            <h4><i class="fas fa-memory"></i> RAM USAGE</h4>
-                            <p id="ram-val" style="font-family: monospace; font-size: 24px; color: var(--clr-secondary); margin-top: 10px;">62%</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            // محاكاة تغير المؤشرات
-            setInterval(() => {
-                const cpu = document.getElementById('cpu-val');
-                const ram = document.getElementById('ram-val');
-                if(cpu) cpu.innerText = (Math.floor(Math.random() * 15) + 10) + "%";
-                if(ram) ram.innerText = (Math.floor(Math.random() * 5) + 60) + "%";
-            }, 2000);
+        closeMobileMenu();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+
+    function getInitialSection() {
+
+        const hash =
+            window.location.hash.replace("#", "");
+
+        const valid =
+            sections.some(
+                section => section.id === hash
+            );
+
+        return valid ? hash : "home";
+    }
+
+
+    function initializeNavigation() {
+
+        showSection(
+            getInitialSection(),
+            false
+        );
+
+        navLinks.forEach(link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    showSection(
+                        link.dataset.section
+                    );
+                }
+            );
+
+        });
+
+
+        document
+            .querySelectorAll("[data-section-link]")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+                        showSection(
+                            link.dataset.sectionLink
+                        );
+                    }
+                );
+
+            });
+
+
+        window.addEventListener(
+            "hashchange",
+            () => {
+                showSection(
+                    getInitialSection(),
+                    false
+                );
+            }
+        );
+    }
+
+
+    initializeNavigation();
+
+
+    /* =====================================================
+       MOBILE MENU
+    ====================================================== */
+
+    function closeMobileMenu() {
+
+        if (!nav || !menuToggle) {
+            return;
         }
 
-        // --- 5. بناء المشاريع (Projects) ---
-        const projSection = document.querySelector('#projects');
-        if (projSection) {
-            projSection.innerHTML = `
-                <h2 style="margin-bottom: 30px; border-right: 4px solid var(--clr-primary); padding-right: 15px;">PROJECT LOGS // سجل العمليات الاستراتيجية</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <div class="cyber-card">
-                        <span style="font-size: 10px; color: #555; font-family: monospace;">ID: PROJ-001</span>
-                        <h3 style="margin: 10px 0;">نظام حماية خطوط الإنتاج (ICS Shield)</h3>
-                        <p style="color: #b0b0b0; font-size: 0.9rem;">تطوير بروتوكول أمني مخصص لأنظمة التحكم الصناعي لمنع هجمات التلاعب بالبيانات.</p>
-                    </div>
-                    <div class="cyber-card">
-                        <span style="font-size: 10px; color: #555; font-family: monospace;">ID: PROJ-002</span>
-                        <h3 style="margin: 10px 0;">الروبوت الأمني الذكي (Cyber-Mech)</h3>
-                        <p style="color: #b0b0b0; font-size: 0.9rem;">تصميم ميكانيكي وبرمجي لروبوت متحرك يستخدم الذكاء الاصطناعي لمسح الشبكات.</p>
-                    </div>
-                </div>
-            `;
+        nav.classList.remove("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    }
+
+
+    if (menuToggle) {
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    nav.classList.toggle("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       SIMULATED TELEMETRY
+    ====================================================== */
+
+    const cpuValue =
+        document.getElementById("cpu-value");
+
+    const ramValue =
+        document.getElementById("ram-value");
+
+    const cpuBar =
+        document.getElementById("cpu-bar");
+
+    const ramBar =
+        document.getElementById("ram-bar");
+
+    const cpuState =
+        document.getElementById("cpu-state");
+
+    const ramState =
+        document.getElementById("ram-state");
+
+
+    function randomBetween(min, max) {
+
+        return Math.floor(
+            Math.random() *
+            (max - min + 1)
+        ) + min;
+    }
+
+
+    function updateTelemetry() {
+
+        const cpu =
+            randomBetween(8, 36);
+
+        const ram =
+            randomBetween(48, 74);
+
+
+        if (cpuValue) {
+            cpuValue.textContent =
+                `${cpu}%`;
         }
 
-        // --- 6. بناء المختبر (Lab) ---
-        const labSection = document.querySelector('#lab');
-        if (labSection) {
-            labSection.innerHTML = `
-                <h2 style="margin-bottom: 30px; border-right: 4px solid var(--clr-primary); padding-right: 15px;">THE ARCHIVE // الأرشيف التقني والمختبر</h2>
-                <div class="cyber-card">
-                    <h4 style="color:var(--clr-primary);"><i class="fas fa-flask"></i> أبحاث جارية: تأمين الأذرع الروبوتية الجراحية</h4>
-                    <p style="color: #b0b0b0; margin-top: 10px;">دراسة متعمقة في تقليل زمن التأخير (Latency) عند تشفير أوامر الحركة في الروبوتات الحساسة.</p>
-                </div>
-            `;
+        if (ramValue) {
+            ramValue.textContent =
+                `${ram}%`;
         }
 
-        // --- 7. تحديث الساعة الحية ---
-        setInterval(() => {
-            const time = new Date().toLocaleTimeString('en-GB');
-            const clock = document.getElementById('live-clock');
-            if(clock) clock.innerText = time;
-        }, 1000);
-    });
+        if (cpuBar) {
+            cpuBar.style.width =
+                `${cpu}%`;
+        }
+
+        if (ramBar) {
+            ramBar.style.width =
+                `${ram}%`;
+        }
+
+
+        if (cpuState) {
+
+            cpuState.textContent =
+                cpu > 30
+                    ? "ELEVATED"
+                    : "NORMAL";
+        }
+
+
+        if (ramState) {
+
+            ramState.textContent =
+                ram > 70
+                    ? "HIGH"
+                    : "STABLE";
+        }
+
+    }
+
+
+    updateTelemetry();
+
+    setInterval(
+        updateTelemetry,
+        2200
+    );
+
+
+    /* =====================================================
+       SYSTEM LOG
+    ====================================================== */
+
+    const logs = [
+        "[MONITOR] Telemetry cycle completed.",
+        "[SECURITY] No critical anomalies detected.",
+        "[NETWORK] Secure channel remains active.",
+        "[ENGINE] Cyber-mechatronic subsystem synchronized.",
+        "[SYSTEM] Monitoring modules operational.",
+        "[ACCESS] Public profile interface ready."
+    ];
+
+    let logIndex = 0;
+
+
+    function appendSystemLog() {
+
+        if (!systemLog) {
+            return;
+        }
+
+        const p =
+            document.createElement("p");
+
+        const label =
+            document.createElement("span");
+
+        label.textContent =
+            logs[logIndex].split("]")[0] + "]";
+
+        const message =
+            logs[logIndex]
+                .substring(
+                    logs[logIndex].indexOf("]") + 1
+                )
+                .trim();
+
+        p.appendChild(label);
+
+        p.appendChild(
+            document.createTextNode(
+                ` ${message}`
+            )
+        );
+
+        systemLog.appendChild(p);
+
+        while (
+            systemLog.children.length > 8
+        ) {
+            systemLog.removeChild(
+                systemLog.firstElementChild
+            );
+        }
+
+        logIndex =
+            (logIndex + 1) % logs.length;
+    }
+
+
+    setInterval(
+        appendSystemLog,
+        4500
+    );
+
+
+    /* =====================================================
+       COMMAND PALETTE
+    ====================================================== */
+
+    function openPalette() {
+
+        if (!commandPalette) {
+            return;
+        }
+
+        commandPalette.classList.add("open");
+
+        commandPalette.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        if (paletteInput) {
+
+            paletteInput.value = "";
+
+            setTimeout(
+                () => paletteInput.focus(),
+                50
+            );
+        }
+    }
+
+
+    function closePalette() {
+
+        if (!commandPalette) {
+            return;
+        }
+
+        commandPalette.classList.remove("open");
+
+        commandPalette.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                (event.ctrlKey || event.metaKey) &&
+                event.key.toLowerCase() === "k"
+            ) {
+
+                event.preventDefault();
+
+                openPalette();
+
+            }
+
+
+            if (event.key === "Escape") {
+                closePalette();
+            }
+
+        }
+    );
+
+
+    if (paletteClose) {
+
+        paletteClose.addEventListener(
+            "click",
+            closePalette
+        );
+
+    }
+
+
+    const paletteBackdrop =
+        document.querySelector(".palette-backdrop");
+
+    if (paletteBackdrop) {
+
+        paletteBackdrop.addEventListener(
+            "click",
+            closePalette
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            "[data-command-section]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    showSection(
+                        button.dataset.commandSection
+                    );
+
+                    closePalette();
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       PALETTE SEARCH
+    ====================================================== */
+
+    if (paletteInput) {
+
+        paletteInput.addEventListener(
+            "input",
+            () => {
+
+                const query =
+                    paletteInput.value
+                        .trim()
+                        .toLowerCase();
+
+                document
+                    .querySelectorAll(
+                        "#palette-results button"
+                    )
+                    .forEach(button => {
+
+                        const text =
+                            button.textContent
+                                .toLowerCase();
+
+                        button.hidden =
+                            query.length > 0 &&
+                            !text.includes(query);
+                    });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       TERMINAL
+    ====================================================== */
+
+    const terminalCommands = {
+
+        help() {
+
+            return [
+                "Available commands:",
+                "",
+                "help      → Show available commands",
+                "about     → About the engineer",
+                "skills    → Display technical domains",
+                "projects  → Open project center",
+                "status    → Display system status",
+                "contact   → Contact information",
+                "clear     → Clear terminal"
+            ];
+
+        },
+
+
+        about() {
+
+            return [
+                "IDENTITY: AMEER AL-DIN AL-SABRI",
+                "ROLE: CYBER ENGINEER",
+                "FOCUS: CYBERSECURITY / MECHATRONICS / IT",
+                "MODE: ENGINEERING & RESEARCH"
+            ];
+
+        },
+
+
+        skills() {
+
+            return [
+                "CYBERSECURITY",
+                "NETWORK SECURITY",
+                "IT SYSTEMS",
+                "MECHATRONICS",
+                "ROBOTICS",
+                "INDUSTRIAL SECURITY",
+                "SYSTEM ENGINEERING"
+            ];
+
+        },
+
+
+        projects() {
+
+            showSection("projects");
+
+            return [
+                "Opening PROJECT COMMAND CENTER..."
+            ];
+
+        },
+
+
+        status() {
+
+            return [
+                "SYSTEM        : ONLINE",
+                "NETWORK       : SECURE",
+                "SECURITY      : ACTIVE",
+                "THREAT LEVEL  : LOW",
+                "ENVIRONMENT   : SIMULATED",
+                "CORE          : AMEER.SYS v2.0"
+            ];
+
+        },
+
+
+        contact() {
+
+            return [
+                "CONTACT MODULE",
+                "",
+                "Use the public contact channels",
+                "configured for the portfolio."
+            ];
+
+        },
+
+
+        clear() {
+
+            if (terminalOutput) {
+                terminalOutput.innerHTML = "";
+            }
+
+            return [];
+
+        }
+
+    };
+
+
+    function writeTerminalLine(
+        text,
+        type = "normal"
+    ) {
+
+        if (!terminalOutput) {
+            return;
+        }
+
+        const p =
+            document.createElement("p");
+
+        if (type === "command") {
+
+            const strong =
+                document.createElement("strong");
+
+            strong.textContent = text;
+
+            p.appendChild(strong);
+
+        } else {
+
+            p.textContent = text;
+
+        }
+
+        terminalOutput.appendChild(p);
+
+        terminalOutput.scrollTop =
+            terminalOutput.scrollHeight;
+    }
+
+
+    function executeCommand(command) {
+
+        const normalized =
+            command
+                .trim()
+                .toLowerCase();
+
+        if (!normalized) {
+            return;
+        }
+
+        writeTerminalLine(
+            `> ${command}`,
+            "command"
+        );
+
+
+        const action =
+            terminalCommands[normalized];
+
+
+        if (!action) {
+
+            writeTerminalLine(
+                `Command not found: ${command}`
+            );
+
+            writeTerminalLine(
+                "Type 'help' to list available commands."
+            );
+
+            return;
+        }
+
+
+        const result =
+            action();
+
+
+        if (Array.isArray(result)) {
+
+            result.forEach(line => {
+
+                writeTerminalLine(line);
+
+            });
+
+        }
+
+    }
+
+
+    if (terminalForm) {
+
+        terminalForm.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+                if (!terminalInput) {
+                    return;
+                }
+
+                const command =
+                    terminalInput.value;
+
+                terminalInput.value = "";
+
+                executeCommand(command);
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       TERMINAL QUICK COMMANDS
+    ====================================================== */
+
+    document
+        .querySelectorAll(".terminal-hints span")
+        .forEach(hint => {
+
+            hint.addEventListener(
+                "click",
+                () => {
+
+                    if (!terminalInput) {
+                        return;
+                    }
+
+                    terminalInput.value =
+                        hint.textContent;
+
+                    terminalInput.focus();
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       INITIAL FOCUS
+    ====================================================== */
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            const initial =
+                getInitialSection();
+
+            if (initial === "terminal") {
+
+                setTimeout(
+                    () => {
+
+                        if (terminalInput) {
+                            terminalInput.focus();
+                        }
+
+                    },
+                    300
+                );
+
+            }
+
+        }
+    );
+
+
 })();
