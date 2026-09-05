@@ -1,34 +1,23 @@
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 128 128">
 
-    <rect
-        width="128"
-        height="128"
-        rx="18"
-        fill="#02060b"/>
+    <rect width="128"
+          height="128"
+          rx="22"
+          fill="#02060b"/>
 
-    <rect
-        x="8"
-        y="8"
-        width="112"
-        height="112"
-        rx="14"
-        fill="none"
-        stroke="#00d9ff"
-        stroke-width="2"/>
+    <path d="M25 30h78v12H25z"
+          fill="#00eaff"/>
 
-    <path
-        d="M32 90V38h12l20 30V38h12v52H64L44 60v30z"
-        fill="#00d9ff"/>
+    <path d="M25 58h52v12H25z"
+          fill="#55ff9a"/>
 
-    <path
-        d="M82 90V38h14v52z"
-        fill="#00ff88"/>
+    <path d="M25 86h78v12H25z"
+          fill="#00eaff"/>
 
-    <circle
-        cx="102"
-        cy="24"
-        r="5"
-        fill="#00ff88"/>
+    <circle cx="92"
+            cy="64"
+            r="8"
+            fill="#55ff9a"/>
+
 </svg>
