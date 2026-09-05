@@ -2,987 +2,1756 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+    >
 
     <meta name="theme-color" content="#02060b">
     <meta name="color-scheme" content="dark">
 
-    <meta name="description"
-          content="AMEER.SYS — Cyber Engineering Portfolio. الأمن السيبراني، الميكاترونكس، أنظمة IT والهندسة الرقمية.">
+    <meta
+        name="description"
+        content="AMEER.SYS — Cyber Engineering Portfolio. الأمن السيبراني، الميكاترونكس، أنظمة IT والهندسة الرقمية."
+    >
 
     <meta name="author" content="أمير الدين الصبري">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="AMEER.SYS // Cyber Engineering">
-    <meta property="og:description" content="Cybersecurity × Mechatronics × IT Systems">
+    <meta
+        property="og:title"
+        content="AMEER.SYS // Cyber Engineering"
+    >
+    <meta
+        property="og:description"
+        content="Cybersecurity × Mechatronics × IT Systems"
+    >
     <meta property="og:image" content="profile.jpg">
 
     <title>AMEER.SYS // Cyber Engineering</title>
 
-    <link rel="preload"
-          href="assets/fonts/Tajawal-Regular.ttf"
-          as="font"
-          type="font/ttf"
-          crossorigin>
+    <!-- Tajawal Font -->
+    <link
+        rel="preload"
+        href="assets/fonts/Tajawal-Regular.ttf"
+        as="font"
+        type="font/ttf"
+        crossorigin
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <!-- PWA Manifest -->
+    <link
+        rel="manifest"
+        href="manifest.webmanifest"
+    >
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <!-- Main Stylesheet -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "أمير الدين الصبري",
+        "jobTitle": "Cyber Engineer",
+        "description": "Cybersecurity, Mechatronics and IT Systems",
+        "image": "profile.jpg",
+        "url": "https://ameer-alsabri.vercel.app/"
+    }
+    </script>
 </head>
 
 <body>
 
-<div class="cyber-grid" aria-hidden="true"></div>
-<div class="scanlines" aria-hidden="true"></div>
-<div class="noise" aria-hidden="true"></div>
+    <!-- =====================================================
+         BACKGROUND EFFECTS
+    ====================================================== -->
 
-<header class="cyber-header">
-
-    <a href="#home" class="brand" aria-label="AMEER.SYS">
-        <span class="brand-main">AMEER.SYS</span>
-        <span class="brand-sub">// CYBER ENGINEERING</span>
-    </a>
-
-    <button
-        id="menu-toggle"
-        class="menu-toggle"
-        type="button"
-        aria-label="فتح القائمة"
-        aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <nav id="main-nav" class="cyber-nav" aria-label="التنقل الرئيسي">
-
-        <a href="#home" class="nav-link active" data-section="home">
-            <span>01</span>
-            الرئيسية
-        </a>
-
-        <a href="#identity" class="nav-link" data-section="identity">
-            <span>02</span>
-            الهوية
-        </a>
-
-        <a href="#capabilities" class="nav-link" data-section="capabilities">
-            <span>03</span>
-            القدرات
-        </a>
-
-        <a href="#projects" class="nav-link" data-section="projects">
-            <span>04</span>
-            المشاريع
-        </a>
-
-        <a href="#ops-center" class="nav-link" data-section="ops-center">
-            <span>05</span>
-            العمليات
-        </a>
-
-        <a href="#lab" class="nav-link" data-section="lab">
-            <span>06</span>
-            المختبر
-        </a>
-
-        <a href="#terminal" class="nav-link" data-section="terminal">
-            <span>07</span>
-            Terminal
-        </a>
-
-    </nav>
-
-    <div class="header-status">
-        <span class="status-dot"></span>
-        <span id="connection-status">ONLINE</span>
-        <time id="live-clock">00:00:00</time>
+    <div
+        class="cyber-grid"
+        aria-hidden="true">
     </div>
 
-</header>
+    <div
+        class="scanlines"
+        aria-hidden="true">
+    </div>
 
-<main id="presentation">
+    <div
+        class="noise"
+        aria-hidden="true">
+    </div>
 
-    <!-- ======================================================
-         01 HOME
-    ======================================================= -->
 
-    <section id="home" class="page-section active">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-        <div class="slide-inner hero-slide">
+    <header class="cyber-header">
 
-            <div class="hero-content">
+        <a
+            href="#home"
+            class="brand"
+            aria-label="AMEER.SYS - الصفحة الرئيسية"
+        >
+            <span class="brand-main">
+                AMEER.SYS
+            </span>
 
-                <div class="system-badge">
-                    <span class="pulse"></span>
-                    SYSTEM ONLINE
-                </div>
+            <span class="brand-sub">
+                // CYBER ENGINEERING
+            </span>
+        </a>
 
-                <p class="hero-kicker">
-                    CYBERSECURITY × MECHATRONICS × IT
-                </p>
 
-                <h1>
-                    أمير الدين
-                    <span>الصبري</span>
-                </h1>
+        <button
+            id="menu-toggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="فتح القائمة"
+            aria-expanded="false"
+            aria-controls="main-nav"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-                <h2>
-                    CYBER ENGINEERING // DIGITAL SYSTEMS
-                </h2>
 
-                <p class="hero-description">
-                    مهندس ومختص في الأمن السيبراني وتقنيات المعلومات
-                    والميكاترونكس، أعمل على دمج الهندسة والأنظمة الرقمية
-                    والأمن السيبراني لبناء حلول أكثر ذكاءً وأمانًا.
-                </p>
+        <nav
+            id="main-nav"
+            class="cyber-nav"
+            aria-label="التنقل الرئيسي"
+        >
 
-                <div class="hero-actions">
+            <a
+                href="#home"
+                class="nav-link active"
+                data-section="home"
+            >
+                <span>01</span>
+                الرئيسية
+            </a>
 
-                    <a href="#projects"
-                       class="btn btn-primary"
-                       data-section-link="projects">
-                        <span>استكشف المشاريع</span>
-                        <b>←</b>
-                    </a>
+            <a
+                href="#identity"
+                class="nav-link"
+                data-section="identity"
+            >
+                <span>02</span>
+                الهوية
+            </a>
 
-                    <a href="#identity"
-                       class="btn btn-outline"
-                       data-section-link="identity">
-                        <span>تعرف عليّ</span>
-                        <b>↗</b>
-                    </a>
+            <a
+                href="#capabilities"
+                class="nav-link"
+                data-section="capabilities"
+            >
+                <span>03</span>
+                القدرات
+            </a>
 
-                </div>
+            <a
+                href="#projects"
+                class="nav-link"
+                data-section="projects"
+            >
+                <span>04</span>
+                المشاريع
+            </a>
 
-                <div class="hero-meta">
-                    <span>LOCATION: YEMEN</span>
-                    <span>MODE: ENGINEERING</span>
-                    <span>ACCESS: PUBLIC</span>
-                </div>
+            <a
+                href="#ops-center"
+                class="nav-link"
+                data-section="ops-center"
+            >
+                <span>05</span>
+                العمليات
+            </a>
 
-            </div>
+            <a
+                href="#lab"
+                class="nav-link"
+                data-section="lab"
+            >
+                <span>06</span>
+                المختبر
+            </a>
 
-            <div class="profile-console">
+            <a
+                href="#terminal"
+                class="nav-link"
+                data-section="terminal"
+            >
+                <span>07</span>
+                Terminal
+            </a>
 
-                <div class="console-header">
-                    <span>IDENTITY_NODE</span>
-                    <span>0xAE-2026</span>
-                </div>
+        </nav>
 
-                <div class="profile-image-wrapper">
 
-                    <div class="profile-frame-corner top-left"></div>
-                    <div class="profile-frame-corner top-right"></div>
-                    <div class="profile-frame-corner bottom-left"></div>
-                    <div class="profile-frame-corner bottom-right"></div>
+        <div class="header-status">
 
-                    <img
-                        src="profile.jpg"
-                        alt="صورة أمير الدين الصبري"
-                        class="profile-image"
-                        loading="eager"
-                        decoding="async">
+            <span
+                class="status-dot"
+                aria-hidden="true">
+            </span>
 
-                    <div class="profile-overlay">
-                        <span>IDENTITY VERIFIED</span>
-                    </div>
+            <span id="connection-status">
+                ONLINE
+            </span>
 
-                </div>
-
-                <div class="profile-info">
-
-                    <div>
-                        <span>ROLE</span>
-                        <strong>CYBER ENGINEER</strong>
-                    </div>
-
-                    <div>
-                        <span>STATUS</span>
-                        <strong class="green-text">AVAILABLE</strong>
-                    </div>
-
-                    <div>
-                        <span>SECURITY</span>
-                        <strong>LEVEL 04</strong>
-                    </div>
-
-                </div>
-
-            </div>
+            <time
+                id="live-clock"
+                datetime=""
+            >
+                00:00:00
+            </time>
 
         </div>
 
-        <div class="slide-hint">
-            <span>SWIPE / SCROLL</span>
-            <i>↓</i>
-        </div>
-
-    </section>
+    </header>
 
 
-    <!-- ======================================================
-         02 IDENTITY
-    ======================================================= -->
+    <!-- =====================================================
+         PRESENTATION
+    ====================================================== -->
 
-    <section id="identity" class="page-section">
+    <main id="presentation">
 
-        <div class="slide-inner">
 
-            <div class="section-heading">
+        <!-- =================================================
+             01 — HOME
+        ================================================== -->
 
-                <div>
-                    <span class="section-label">SYSTEM / 02</span>
+        <section
+            id="home"
+            class="page-section active"
+            aria-labelledby="home-title"
+        >
+
+            <div class="slide-inner hero-slide">
+
+                <div class="hero-content">
+
+                    <div class="system-badge">
+
+                        <span
+                            class="pulse"
+                            aria-hidden="true">
+                        </span>
+
+                        SYSTEM ONLINE
+
+                    </div>
+
+
+                    <p class="hero-kicker">
+                        CYBERSECURITY × MECHATRONICS × IT
+                    </p>
+
+
+                    <h1 id="home-title">
+
+                        أمير الدين
+
+                        <span>
+                            الصبري
+                        </span>
+
+                    </h1>
+
 
                     <h2>
-                        الهوية
-                        <span>IDENTITY PROFILE</span>
+                        CYBER ENGINEERING // DIGITAL SYSTEMS
                     </h2>
-                </div>
 
-                <div class="section-code">
-                    NODE://AE-2026
-                </div>
 
-            </div>
+                    <p class="hero-description">
+                        مهندس ومختص في الأمن السيبراني وتقنيات المعلومات
+                        والميكاترونكس، أعمل على دمج الهندسة والأنظمة الرقمية
+                        والأمن السيبراني لبناء حلول أكثر ذكاءً وأمانًا.
+                    </p>
 
-            <div class="identity-layout">
 
-                <article class="identity-main panel">
+                    <div class="hero-actions">
 
-                    <div class="panel-header">
-                        <span>PROFILE.EXE</span>
-                        <span>ACTIVE</span>
+                        <a
+                            href="#projects"
+                            class="btn btn-primary"
+                            data-section-link="projects"
+                        >
+                            <span>
+                                استكشف المشاريع
+                            </span>
+
+                            <b aria-hidden="true">
+                                ←
+                            </b>
+                        </a>
+
+
+                        <a
+                            href="#identity"
+                            class="btn btn-outline"
+                            data-section-link="identity"
+                        >
+                            <span>
+                                تعرف عليّ
+                            </span>
+
+                            <b aria-hidden="true">
+                                ↗
+                            </b>
+                        </a>
+
                     </div>
 
-                    <div class="identity-content">
 
-                        <div class="identity-mark">
-                            AE
+                    <div class="hero-meta">
+
+                        <span>
+                            LOCATION: YEMEN
+                        </span>
+
+                        <span>
+                            MODE: ENGINEERING
+                        </span>
+
+                        <span>
+                            ACCESS: PUBLIC
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-console">
+
+                    <div class="console-header">
+
+                        <span>
+                            IDENTITY_NODE
+                        </span>
+
+                        <span>
+                            0xAE-2026
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-image-wrapper">
+
+                        <div
+                            class="profile-frame-corner top-left"
+                            aria-hidden="true">
+                        </div>
+
+                        <div
+                            class="profile-frame-corner top-right"
+                            aria-hidden="true">
+                        </div>
+
+                        <div
+                            class="profile-frame-corner bottom-left"
+                            aria-hidden="true">
+                        </div>
+
+                        <div
+                            class="profile-frame-corner bottom-right"
+                            aria-hidden="true">
+                        </div>
+
+
+                        <img
+                            src="profile.jpg"
+                            alt="صورة أمير الدين الصبري"
+                            class="profile-image"
+                            loading="eager"
+                            decoding="async"
+                        >
+
+
+                        <div class="profile-overlay">
+                            <span>
+                                IDENTITY VERIFIED
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <div>
+                            <span>ROLE</span>
+                            <strong>
+                                CYBER ENGINEER
+                            </strong>
                         </div>
 
                         <div>
-                            <span class="eyebrow">ENGINEERING PROFILE</span>
+                            <span>STATUS</span>
+                            <strong class="green-text">
+                                AVAILABLE
+                            </strong>
+                        </div>
 
-                            <h3>
-                                أمير الدين الصبري
-                            </h3>
+                        <div>
+                            <span>SECURITY</span>
+                            <strong>
+                                LEVEL 04
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="slide-hint">
+
+                <span>
+                    SWIPE / SCROLL
+                </span>
+
+                <i aria-hidden="true">
+                    ↓
+                </i>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             02 — IDENTITY
+        ================================================== -->
+
+        <section
+            id="identity"
+            class="page-section"
+            aria-labelledby="identity-title"
+        >
+
+            <div class="slide-inner">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM / 02
+                        </span>
+
+                        <h2 id="identity-title">
+                            الهوية
+                            <span>
+                                IDENTITY PROFILE
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="section-code">
+                        NODE://AE-2026
+                    </div>
+
+                </div>
+
+
+                <div class="identity-layout">
+
+                    <article class="identity-main panel">
+
+                        <div class="panel-header">
+
+                            <span>
+                                PROFILE.EXE
+                            </span>
+
+                            <span>
+                                ACTIVE
+                            </span>
+
+                        </div>
+
+
+                        <div class="identity-content">
+
+                            <div class="identity-mark">
+                                AE
+                            </div>
+
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    ENGINEERING PROFILE
+                                </span>
+
+                                <h3>
+                                    أمير الدين الصبري
+                                </h3>
+
+                                <p>
+                                    أعمل في تقاطع الأمن السيبراني والهندسة
+                                    والأنظمة الرقمية، مع اهتمام ببناء حلول
+                                    عملية تجمع بين التفكير الأمني والتقنية
+                                    والهندسة الذكية.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <div class="identity-stats">
+
+                        <article class="stat-card">
+                            <span>01</span>
+                            <strong>CYBER</strong>
+                            <small>SECURITY</small>
+                        </article>
+
+                        <article class="stat-card">
+                            <span>02</span>
+                            <strong>MECHA</strong>
+                            <small>TRONICS</small>
+                        </article>
+
+                        <article class="stat-card">
+                            <span>03</span>
+                            <strong>IT</strong>
+                            <small>SYSTEMS</small>
+                        </article>
+
+                        <article class="stat-card">
+                            <span>04</span>
+                            <strong>DIGITAL</strong>
+                            <small>ENGINEERING</small>
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <div class="identity-principles">
+
+                    <div>
+                        <span>01</span>
+
+                        <strong>
+                            SECURITY FIRST
+                        </strong>
+
+                        <p>
+                            التفكير الأمني جزء أساسي من تصميم الأنظمة.
+                        </p>
+                    </div>
+
+
+                    <div>
+                        <span>02</span>
+
+                        <strong>
+                            ENGINEER THE SYSTEM
+                        </strong>
+
+                        <p>
+                            تحليل المشكلة وبناء الحل بدل معالجة الأعراض فقط.
+                        </p>
+                    </div>
+
+
+                    <div>
+                        <span>03</span>
+
+                        <strong>
+                            CONTINUOUS LEARNING
+                        </strong>
+
+                        <p>
+                            التقنية تتغير باستمرار، لذلك التعلم عملية مستمرة.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             03 — CAPABILITIES
+        ================================================== -->
+
+        <section
+            id="capabilities"
+            class="page-section"
+            aria-labelledby="capabilities-title"
+        >
+
+            <div class="slide-inner">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM / 03
+                        </span>
+
+                        <h2 id="capabilities-title">
+                            القدرات
+                            <span>
+                                ENGINEERING CAPABILITIES
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="section-code">
+                        MODULES://04
+                    </div>
+
+                </div>
+
+
+                <div class="capabilities-grid">
+
+                    <article class="capability-card">
+
+                        <div class="cap-number">
+                            01
+                        </div>
+
+                        <div
+                            class="cap-icon"
+                            aria-hidden="true">
+                            ⌁
+                        </div>
+
+                        <h3>
+                            CYBERSECURITY
+                        </h3>
+
+                        <p>
+                            أمن الشبكات والأنظمة، تحليل المخاطر،
+                            التفكير الأمني ومفاهيم الحماية والاستجابة.
+                        </p>
+
+                        <div class="tag-list">
+                            <span>NETWORK</span>
+                            <span>SECURITY</span>
+                            <span>RISK</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="capability-card">
+
+                        <div class="cap-number">
+                            02
+                        </div>
+
+                        <div
+                            class="cap-icon"
+                            aria-hidden="true">
+                            ⚙
+                        </div>
+
+                        <h3>
+                            MECHATRONICS
+                        </h3>
+
+                        <p>
+                            تكامل الأنظمة الميكانيكية والإلكترونية
+                            والتحكم والروبوتات والأنظمة الذكية.
+                        </p>
+
+                        <div class="tag-list">
+                            <span>CONTROL</span>
+                            <span>ROBOTICS</span>
+                            <span>MECHANICAL</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="capability-card">
+
+                        <div class="cap-number">
+                            03
+                        </div>
+
+                        <div
+                            class="cap-icon"
+                            aria-hidden="true">
+                            ▣
+                        </div>
+
+                        <h3>
+                            IT SYSTEMS
+                        </h3>
+
+                        <p>
+                            البنية الرقمية، التطبيقات، الخدمات الشبكية
+                            وإدارة الحلول التقنية والأنظمة.
+                        </p>
+
+                        <div class="tag-list">
+                            <span>SYSTEMS</span>
+                            <span>WEB</span>
+                            <span>INFRA</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="capability-card">
+
+                        <div class="cap-number">
+                            04
+                        </div>
+
+                        <div
+                            class="cap-icon"
+                            aria-hidden="true">
+                            ◈
+                        </div>
+
+                        <h3>
+                            NIST MINDSET
+                        </h3>
+
+                        <p>
+                            التعامل مع الأمن من منظور إدارة المخاطر:
+                            التعرف، الحماية، الكشف، الاستجابة والتعافي.
+                        </p>
+
+                        <div class="tag-list">
+                            <span>IDENTIFY</span>
+                            <span>PROTECT</span>
+                            <span>RESPOND</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             04 — PROJECTS
+        ================================================== -->
+
+        <section
+            id="projects"
+            class="page-section"
+            aria-labelledby="projects-title"
+        >
+
+            <div class="slide-inner">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM / 04
+                        </span>
+
+                        <h2 id="projects-title">
+                            المشاريع
+                            <span>
+                                ENGINEERING PROJECTS
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="section-code">
+                        PROJECTS://ACTIVE
+                    </div>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+
+                        <div class="project-top">
+
+                            <span>
+                                PROJ-001
+                            </span>
+
+                            <span class="project-status">
+                                ACTIVE
+                            </span>
+
+                        </div>
+
+                        <div class="project-number">
+                            01
+                        </div>
+
+                        <h3>
+                            ICS SHIELD
+                        </h3>
+
+                        <p>
+                            مفهوم أمني لحماية الأنظمة الصناعية
+                            ومراقبة المخاطر والاتصالات داخل بيئات
+                            التحكم والأنظمة الحساسة.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>ICS</span>
+                            <span>OT</span>
+                            <span>SECURITY</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <div class="project-top">
+
+                            <span>
+                                PROJ-002
+                            </span>
+
+                            <span class="project-status">
+                                ACTIVE
+                            </span>
+
+                        </div>
+
+                        <div class="project-number">
+                            02
+                        </div>
+
+                        <h3>
+                            CYBER-MECH
+                        </h3>
+
+                        <p>
+                            مشروع يجمع بين الميكاترونكس والأنظمة
+                            الرقمية والمفاهيم الأمنية لبناء أنظمة
+                            ذكية أكثر موثوقية.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>MECHA</span>
+                            <span>CONTROL</span>
+                            <span>CYBER</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card">
+
+                        <div class="project-top">
+
+                            <span>
+                                PROJ-003
+                            </span>
+
+                            <span class="project-status">
+                                DEVELOPMENT
+                            </span>
+
+                        </div>
+
+                        <div class="project-number">
+                            03
+                        </div>
+
+                        <h3>
+                            DIGITAL SYSTEMS
+                        </h3>
+
+                        <p>
+                            تطوير حلول وتطبيقات رقمية تركز على
+                            سهولة الاستخدام، البنية المنظمة
+                            والاعتمادية والأمان.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>WEB</span>
+                            <span>IT</span>
+                            <span>SYSTEMS</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             05 — OPS CENTER
+        ================================================== -->
+
+        <section
+            id="ops-center"
+            class="page-section"
+            aria-labelledby="ops-title"
+        >
+
+            <div class="slide-inner">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM / 05
+                        </span>
+
+                        <h2 id="ops-title">
+                            العمليات
+                            <span>
+                                CYBER OPS CENTER
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="section-code">
+                        TELEMETRY://SIMULATED
+                    </div>
+
+                </div>
+
+
+                <div class="telemetry-notice">
+                    <span>●</span>
+                    <strong>
+                        SIMULATED TELEMETRY
+                    </strong>
+
+                    <p>
+                        البيانات المعروضة هنا محاكاة لأغراض العرض
+                        التفاعلي وليست بيانات نظام حقيقية.
+                    </p>
+                </div>
+
+
+                <div class="ops-grid">
+
+                    <article class="metric-card">
+
+                        <span>
+                            CPU LOAD
+                        </span>
+
+                        <strong id="cpu-value">
+                            34%
+                        </strong>
+
+                        <div class="metric-bar">
+                            <i id="cpu-bar"></i>
+                        </div>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            MEMORY
+                        </span>
+
+                        <strong id="ram-value">
+                            58%
+                        </strong>
+
+                        <div class="metric-bar">
+                            <i id="ram-bar"></i>
+                        </div>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            NETWORK
+                        </span>
+
+                        <strong class="green-text">
+                            SECURE
+                        </strong>
+
+                        <small>
+                            CONNECTION STABLE
+                        </small>
+
+                    </article>
+
+
+                    <article class="metric-card">
+
+                        <span>
+                            THREAT LEVEL
+                        </span>
+
+                        <strong class="green-text">
+                            LOW
+                        </strong>
+
+                        <small>
+                            NO ACTIVE THREATS
+                        </small>
+
+                    </article>
+
+                </div>
+
+
+                <div class="ops-lower">
+
+                    <article class="panel system-log-panel">
+
+                        <div class="panel-header">
+
+                            <span>
+                                SYSTEM.LOG
+                            </span>
+
+                            <span>
+                                LIVE
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="system-log"
+                            class="system-log"
+                            aria-live="polite"
+                        >
 
                             <p>
-                                أعمل في تقاطع الأمن السيبراني والهندسة
-                                والأنظمة الرقمية، مع اهتمام ببناء حلول
-                                عملية تجمع بين التفكير الأمني والتقنية
-                                والهندسة الذكية.
+                                <span>
+                                    [BOOT]
+                                </span>
+                                AMEER.SYS initialized.
                             </p>
+
+                            <p>
+                                <span>
+                                    [SEC]
+                                </span>
+                                Security layer online.
+                            </p>
+
+                            <p>
+                                <span>
+                                    [NET]
+                                </span>
+                                Network interface stable.
+                            </p>
+
                         </div>
 
-                    </div>
-
-                </article>
-
-                <div class="identity-stats">
-
-                    <article class="stat-card">
-                        <span>01</span>
-                        <strong>CYBER</strong>
-                        <small>SECURITY</small>
                     </article>
 
-                    <article class="stat-card">
-                        <span>02</span>
-                        <strong>MECHA</strong>
-                        <small>TRONICS</small>
-                    </article>
 
-                    <article class="stat-card">
-                        <span>03</span>
-                        <strong>IT</strong>
-                        <small>SYSTEMS</small>
-                    </article>
+                    <article class="panel security-panel">
 
-                    <article class="stat-card">
-                        <span>04</span>
-                        <strong>DIGITAL</strong>
-                        <small>ENGINEERING</small>
-                    </article>
+                        <div class="panel-header">
 
-                </div>
+                            <span>
+                                SECURITY_MATRIX
+                            </span>
 
-            </div>
+                            <span>
+                                OK
+                            </span>
 
-            <div class="identity-principles">
-
-                <div>
-                    <span>01</span>
-                    <strong>SECURITY FIRST</strong>
-                    <p>التفكير الأمني جزء أساسي من تصميم الأنظمة.</p>
-                </div>
-
-                <div>
-                    <span>02</span>
-                    <strong>ENGINEER THE SYSTEM</strong>
-                    <p>تحليل المشكلة وبناء الحل بدل معالجة الأعراض فقط.</p>
-                </div>
-
-                <div>
-                    <span>03</span>
-                    <strong>CONTINUOUS LEARNING</strong>
-                    <p>التقنية تتغير باستمرار، لذلك التعلم عملية مستمرة.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ======================================================
-         03 CAPABILITIES
-    ======================================================= -->
-
-    <section id="capabilities" class="page-section">
-
-        <div class="slide-inner">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">SYSTEM / 03</span>
-
-                    <h2>
-                        القدرات
-                        <span>ENGINEERING CAPABILITIES</span>
-                    </h2>
-                </div>
-
-                <div class="section-code">
-                    MODULES://04
-                </div>
-
-            </div>
-
-            <div class="capabilities-grid">
-
-                <article class="capability-card">
-
-                    <div class="cap-number">01</div>
-                    <div class="cap-icon">⌁</div>
-
-                    <h3>CYBERSECURITY</h3>
-
-                    <p>
-                        أمن الشبكات والأنظمة، تحليل المخاطر،
-                        التفكير الأمني ومفاهيم الحماية والاستجابة.
-                    </p>
-
-                    <div class="tag-list">
-                        <span>NETWORK</span>
-                        <span>SECURITY</span>
-                        <span>RISK</span>
-                    </div>
-
-                </article>
-
-                <article class="capability-card">
-
-                    <div class="cap-number">02</div>
-                    <div class="cap-icon">⚙</div>
-
-                    <h3>MECHATRONICS</h3>
-
-                    <p>
-                        تكامل الأنظمة الميكانيكية والإلكترونية
-                        والتحكم والروبوتات والأنظمة الذكية.
-                    </p>
-
-                    <div class="tag-list">
-                        <span>CONTROL</span>
-                        <span>ROBOTICS</span>
-                        <span>MECHANICAL</span>
-                    </div>
-
-                </article>
-
-                <article class="capability-card">
-
-                    <div class="cap-number">03</div>
-                    <div class="cap-icon">▣</div>
-
-                    <h3>IT SYSTEMS</h3>
-
-                    <p>
-                        البنية الرقمية، التطبيقات، الخدمات الشبكية
-                        وإدارة الحلول التقنية والأنظمة.
-                    </p>
-
-                    <div class="tag-list">
-                        <span>SYSTEMS</span>
-                        <span>WEB</span>
-                        <span>INFRA</span>
-                    </div>
-
-                </article>
-
-                <article class="capability-card">
-
-                    <div class="cap-number">04</div>
-                    <div class="cap-icon">◈</div>
-
-                    <h3>NIST MINDSET</h3>
-
-                    <p>
-                        التعامل مع الأمن من منظور إدارة المخاطر:
-                        التعرف، الحماية، الكشف، الاستجابة والتعافي.
-                    </p>
-
-                    <div class="tag-list">
-                        <span>IDENTIFY</span>
-                        <span>PROTECT</span>
-                        <span>RESPOND</span>
-                    </div>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ======================================================
-         04 PROJECTS
-    ======================================================= -->
-
-    <section id="projects" class="page-section">
-
-        <div class="slide-inner">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">SYSTEM / 04</span>
-
-                    <h2>
-                        المشاريع
-                        <span>PROJECT COMMAND CENTER</span>
-                    </h2>
-                </div>
-
-                <div class="section-code">
-                    PROJECTS://02
-                </div>
-
-            </div>
-
-            <div class="projects-grid">
-
-                <article class="project-card">
-
-                    <div class="project-top">
-                        <span>PROJ-001</span>
-                        <span>ICS / OT</span>
-                    </div>
-
-                    <div class="project-icon">⌘</div>
-
-                    <h3>
-                        نظام حماية خطوط الإنتاج
-                        <span>ICS SHIELD</span>
-                    </h3>
-
-                    <p>
-                        تصور أمني لحماية أنظمة التحكم الصناعية
-                        وخطوط الإنتاج من المخاطر السيبرانية،
-                        مع التركيز على الفصل الشبكي والمراقبة
-                        وتقليل سطح الهجوم.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>ICS</span>
-                        <span>OT</span>
-                        <span>NETWORK SECURITY</span>
-                    </div>
-
-                    <div class="project-status">
-                        <span class="status-dot"></span>
-                        CONCEPT / SECURITY
-                    </div>
-
-                </article>
-
-
-                <article class="project-card">
-
-                    <div class="project-top">
-                        <span>PROJ-002</span>
-                        <span>MECH / IT</span>
-                    </div>
-
-                    <div class="project-icon">◈</div>
-
-                    <h3>
-                        Cyber-Mech
-                        <span>SMART ENGINEERING</span>
-                    </h3>
-
-                    <p>
-                        مفهوم يدمج الميكاترونكس مع الأنظمة الرقمية
-                        والأمن السيبراني لتصميم بيئات هندسية
-                        ذكية وقابلة للمراقبة والحماية.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>MECHATRONICS</span>
-                        <span>IOT</span>
-                        <span>SECURITY</span>
-                    </div>
-
-                    <div class="project-status">
-                        <span class="status-dot"></span>
-                        DEVELOPMENT / LAB
-                    </div>
-
-                </article>
-
-            </div>
-
-            <div class="project-footer">
-                <span>BUILDING SYSTEMS</span>
-                <span>SECURING SYSTEMS</span>
-                <span>ENGINEERING THE FUTURE</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ======================================================
-         05 OPS CENTER
-    ======================================================= -->
-
-    <section id="ops-center" class="page-section">
-
-        <div class="slide-inner">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">SYSTEM / 05</span>
-
-                    <h2>
-                        غرفة العمليات
-                        <span>CYBER OPS CENTER</span>
-                    </h2>
-                </div>
-
-                <div class="live-indicator">
-                    <span></span>
-                    SIMULATED ENVIRONMENT
-                </div>
-
-            </div>
-
-            <div class="telemetry-notice">
-                <strong>SIMULATED TELEMETRY</strong>
-                <span>
-                    المؤشرات التالية محاكاة بصرية لأغراض العرض
-                    وليست بيانات حقيقية من جهاز المستخدم.
-                </span>
-            </div>
-
-            <div class="metrics-grid">
-
-                <article class="metric-card">
-
-                    <div class="metric-top">
-                        <span>CPU LOAD</span>
-                        <strong id="cpu-value">14%</strong>
-                    </div>
-
-                    <div class="metric-bar">
-                        <span id="cpu-bar"></span>
-                    </div>
-
-                    <div class="metric-footer">
-                        <span>PROCESSOR</span>
-                        <span id="cpu-state">NORMAL</span>
-                    </div>
-
-                </article>
-
-                <article class="metric-card">
-
-                    <div class="metric-top">
-                        <span>MEMORY</span>
-                        <strong id="ram-value">62%</strong>
-                    </div>
-
-                    <div class="metric-bar">
-                        <span id="ram-bar"></span>
-                    </div>
-
-                    <div class="metric-footer">
-                        <span>RAM USAGE</span>
-                        <span id="ram-state">STABLE</span>
-                    </div>
-
-                </article>
-
-                <article class="metric-card system-card">
-
-                    <div class="metric-symbol">◎</div>
-
-                    <div>
-                        <span>NETWORK</span>
-                        <strong id="network-state">SECURE</strong>
-                    </div>
-
-                    <small id="network-detail">
-                        CHANNEL // ENCRYPTED
-                    </small>
-
-                </article>
-
-                <article class="metric-card system-card">
-
-                    <div class="metric-symbol">◇</div>
-
-                    <div>
-                        <span>SECURITY</span>
-                        <strong>ACTIVE</strong>
-                    </div>
-
-                    <small>
-                        THREAT LEVEL // LOW
-                    </small>
-
-                </article>
-
-            </div>
-
-            <div class="ops-layout">
-
-                <article class="terminal-log panel">
-
-                    <div class="panel-header">
-                        <span>LIVE SYSTEM LOG</span>
-                        <span>STREAM://01</span>
-                    </div>
-
-                    <div id="system-log" class="log-content">
-
-                        <p>
-                            <span>[SYSTEM]</span>
-                            Initializing cyber environment...
-                        </p>
-
-                        <p>
-                            <span>[NETWORK]</span>
-                            Secure channel established.
-                        </p>
-
-                        <p>
-                            <span>[SECURITY]</span>
-                            Threat monitoring module active.
-                        </p>
-
-                        <p>
-                            <span>[ENGINE]</span>
-                            AMEER.SYS core loaded successfully.
-                        </p>
-
-                    </div>
-
-                </article>
-
-                <article class="security-panel panel">
-
-                    <div class="panel-header">
-                        <span>SECURITY MATRIX</span>
-                        <span>STATUS</span>
-                    </div>
-
-                    <div class="security-row">
-                        <span>Firewall</span>
-                        <strong>ACTIVE</strong>
-                    </div>
-
-                    <div class="security-row">
-                        <span>Encryption</span>
-                        <strong>ACTIVE</strong>
-                    </div>
-
-                    <div class="security-row">
-                        <span>Monitoring</span>
-                        <strong>ACTIVE</strong>
-                    </div>
-
-                    <div class="security-row">
-                        <span>Threat Level</span>
-                        <strong>LOW</strong>
-                    </div>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ======================================================
-         06 LAB
-    ======================================================= -->
-
-    <section id="lab" class="page-section">
-
-        <div class="slide-inner">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">SYSTEM / 06</span>
-
-                    <h2>
-                        المختبر
-                        <span>CYBER ENGINEERING LAB</span>
-                    </h2>
-                </div>
-
-                <div class="section-code">
-                    LAB://ACTIVE
-                </div>
-
-            </div>
-
-            <div class="lab-layout">
-
-                <article class="lab-terminal panel">
-
-                    <div class="panel-header">
-                        <span>LAB SESSION</span>
-                        <span>SECURE</span>
-                    </div>
-
-                    <div class="code-screen">
-
-                        <p><span class="line-number">01</span> $ initialize --mode=engineering</p>
-                        <p><span class="line-number">02</span> [OK] loading cyber modules...</p>
-                        <p><span class="line-number">03</span> [OK] loading network analysis...</p>
-                        <p><span class="line-number">04</span> [OK] loading system diagnostics...</p>
-                        <p><span class="line-number">05</span> [OK] mechatronics interface ready.</p>
-                        <p><span class="line-number">06</span> $ status</p>
-                        <p><span class="line-number">07</span> <b>AMEER.SYS READY</b></p>
-
-                        <div class="cursor-line">
-                            <span>$</span>
-                            <i></i>
                         </div>
 
-                    </div>
 
-                </article>
+                        <div class="security-matrix">
 
-                <div class="lab-modules">
+                            <div>
+                                <span>
+                                    AUTH
+                                </span>
 
-                    <article>
-                        <span>01</span>
-                        <strong>NETWORK ANALYSIS</strong>
-                        <p>فهم الشبكات وتحليل الاتصالات والمخاطر.</p>
-                    </article>
+                                <strong>
+                                    VERIFIED
+                                </strong>
+                            </div>
 
-                    <article>
-                        <span>02</span>
-                        <strong>SYSTEM HARDENING</strong>
-                        <p>تقليل سطح الهجوم وتحسين وضع الأنظمة.</p>
-                    </article>
 
-                    <article>
-                        <span>03</span>
-                        <strong>ENGINEERING SYSTEMS</strong>
-                        <p>دمج التقنية مع التفكير الهندسي.</p>
-                    </article>
+                            <div>
+                                <span>
+                                    ENCRYPTION
+                                </span>
 
-                    <article>
-                        <span>04</span>
-                        <strong>CONTINUOUS RESEARCH</strong>
-                        <p>التعلم والتجربة والتحليل المستمر.</p>
+                                <strong>
+                                    ENABLED
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <span>
+                                    FIREWALL
+                                </span>
+
+                                <strong>
+                                    ACTIVE
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <span>
+                                    MONITORING
+                                </span>
+
+                                <strong>
+                                    ONLINE
+                                </strong>
+                            </div>
+
+                        </div>
+
                     </article>
 
                 </div>
 
             </div>
 
-            <div class="lab-warning">
-                <span>⚠</span>
-                LAB ENVIRONMENT // EDUCATIONAL & SIMULATED
-            </div>
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- ======================================================
-         07 TERMINAL
-    ======================================================= -->
+        <!-- =================================================
+             06 — LAB
+        ================================================== -->
 
-    <section id="terminal" class="page-section">
+        <section
+            id="lab"
+            class="page-section"
+            aria-labelledby="lab-title"
+        >
 
-        <div class="slide-inner terminal-slide">
+            <div class="slide-inner">
 
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">SYSTEM / 07</span>
-
-                    <h2>
-                        الطرفية
-                        <span>AMEER.SYS TERMINAL</span>
-                    </h2>
-                </div>
-
-                <div class="section-code">
-                    SHELL://PUBLIC
-                </div>
-
-            </div>
-
-            <div class="terminal-window">
-
-                <div class="terminal-titlebar">
-
-                    <div class="terminal-lights">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <span>ameer@cyber-engineering:~</span>
-
-                </div>
-
-                <div
-                    id="terminal-output"
-                    class="terminal-output"
-                    aria-live="polite">
+                <div class="section-heading">
 
                     <div>
-                        <span class="terminal-green">AMEER.SYS</span>
-                        <span>interactive shell initialized.</span>
+
+                        <span class="section-label">
+                            SYSTEM / 06
+                        </span>
+
+                        <h2 id="lab-title">
+                            المختبر
+                            <span>
+                                CYBER ENGINEERING LAB
+                            </span>
+                        </h2>
+
                     </div>
 
-                    <div>
-                        Type <b>help</b> to display available commands.
+
+                    <div class="section-code">
+                        LAB://EXPERIMENTAL
                     </div>
 
                 </div>
 
-                <form id="terminal-form" class="terminal-input-row">
 
-                    <span class="terminal-prompt">
-                        ameer@sys:~$
+                <div class="lab-grid">
+
+                    <article class="lab-card">
+
+                        <span class="lab-index">
+                            LAB-01
+                        </span>
+
+                        <h3>
+                            NETWORK SECURITY
+                        </h3>
+
+                        <p>
+                            دراسة بنية الشبكات، نقاط الضعف،
+                            آليات الحماية ومراقبة حركة البيانات.
+                        </p>
+
+                        <div class="lab-line">
+                            <span>STATUS</span>
+                            <strong>READY</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lab-card">
+
+                        <span class="lab-index">
+                            LAB-02
+                        </span>
+
+                        <h3>
+                            ETHICAL HACKING
+                        </h3>
+
+                        <p>
+                            مختبر للتعلم الأمني والاختبار الأخلاقي
+                            وفهم أساليب اكتشاف الثغرات والدفاع عنها.
+                        </p>
+
+                        <div class="lab-line">
+                            <span>STATUS</span>
+                            <strong>READY</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lab-card">
+
+                        <span class="lab-index">
+                            LAB-03
+                        </span>
+
+                        <h3>
+                            AUTOMATION
+                        </h3>
+
+                        <p>
+                            استكشاف التكامل بين البرمجة والتحكم
+                            والأنظمة الميكاترونية والأتمتة.
+                        </p>
+
+                        <div class="lab-line">
+                            <span>STATUS</span>
+                            <strong>READY</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lab-card">
+
+                        <span class="lab-index">
+                            LAB-04
+                        </span>
+
+                        <h3>
+                            DIGITAL ARCHITECTURE
+                        </h3>
+
+                        <p>
+                            بناء وتطوير تطبيقات وواجهات رقمية
+                            مع الاهتمام بالأداء والأمان وتجربة المستخدم.
+                        </p>
+
+                        <div class="lab-line">
+                            <span>STATUS</span>
+                            <strong>READY</strong>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="lab-terminal-note">
+
+                    <span>
+                        $
                     </span>
 
-                    <input
-                        id="terminal-input"
-                        type="text"
+                    <p>
+                        استخدم Terminal لاستكشاف النظام بشكل تفاعلي.
+                    </p>
+
+                    <a href="#terminal">
+                        OPEN TERMINAL →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             07 — TERMINAL
+        ================================================== -->
+
+        <section
+            id="terminal"
+            class="page-section"
+            aria-labelledby="terminal-title"
+        >
+
+            <div class="slide-inner terminal-slide">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM / 07
+                        </span>
+
+                        <h2 id="terminal-title">
+                            الطرفية
+                            <span>
+                                AMEER TERMINAL
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="section-code">
+                        SHELL://AE
+                    </div>
+
+                </div>
+
+
+                <div class="terminal-window">
+
+                    <div class="terminal-header">
+
+                        <div class="terminal-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <span>
+                            ameer@cyber-engineering:~
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="terminal-output"
+                        class="terminal-output"
+                        aria-live="polite"
+                    >
+
+                        <p>
+                            <span class="terminal-prompt">
+                                system@ameer:~$
+                            </span>
+
+                            Welcome to AMEER.SYS Terminal.
+                        </p>
+
+                        <p>
+                            Type
+                            <strong>
+                                help
+                            </strong>
+                            to display available commands.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="terminal-form"
+                        class="terminal-form"
                         autocomplete="off"
-                        autocapitalize="off"
-                        spellcheck="false"
-                        aria-label="Terminal command">
+                    >
 
-                </form>
+                        <label
+                            for="terminal-input"
+                            class="sr-only"
+                        >
+                            إدخال أمر Terminal
+                        </label>
+
+                        <span class="terminal-prompt">
+                            system@ameer:~$
+                        </span>
+
+                        <input
+                            id="terminal-input"
+                            name="command"
+                            type="text"
+                            inputmode="text"
+                            spellcheck="false"
+                            autocomplete="off"
+                            aria-label="أدخل أمر Terminal"
+                            placeholder="اكتب help..."
+                        >
+
+                    </form>
+
+                </div>
+
+
+                <div class="terminal-hints">
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="help"
+                    >
+                        help
+                    </button>
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="about"
+                    >
+                        about
+                    </button>
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="skills"
+                    >
+                        skills
+                    </button>
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="projects"
+                    >
+                        projects
+                    </button>
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="status"
+                    >
+                        status
+                    </button>
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="contact"
+                    >
+                        contact
+                    </button>
+
+                    <button
+                        type="button"
+                        class="terminal-command"
+                        data-command="clear"
+                    >
+                        clear
+                    </button>
+
+                </div>
 
             </div>
 
-            <div class="terminal-hints">
-                <button type="button" data-command="help">help</button>
-                <button type="button" data-command="about">about</button>
-                <button type="button" data-command="skills">skills</button>
-                <button type="button" data-command="projects">projects</button>
-                <button type="button" data-command="status">status</button>
-                <button type="button" data-command="clear">clear</button>
-            </div>
+        </section>
 
-        </div>
-
-    </section>
-
-</main>
+    </main>
 
 
-<!-- Presentation Controls -->
+    <!-- =====================================================
+         PRESENTATION CONTROLS
+    ====================================================== -->
 
-<div class="presentation-controls">
+    <div
+        class="presentation-controls"
+        aria-label="أدوات التنقل بين الشرائح"
+    >
 
-    <button id="prev-slide" type="button" aria-label="الشريحة السابقة">
-        ↑
-    </button>
-
-    <div id="slide-indicator" class="slide-indicator">
-        <span>01</span>
-        <i>/</i>
-        <span>07</span>
-    </div>
-
-    <button id="next-slide" type="button" aria-label="الشريحة التالية">
-        ↓
-    </button>
-
-</div>
+        <button
+            id="prev-slide"
+            type="button"
+            aria-label="الشريحة السابقة"
+        >
+            ↑
+        </button>
 
 
-<div id="slide-dots" class="slide-dots" aria-label="شرائح العرض"></div>
-
-
-<!-- Command Palette -->
-
-<div id="command-palette" class="command-palette" hidden>
-
-    <div class="palette-backdrop" data-close-palette></div>
-
-    <div class="palette-window">
-
-        <div class="palette-header">
-            <span>COMMAND PALETTE</span>
+        <div
+            id="slide-indicators"
+            class="slide-indicators"
+            aria-label="مؤشرات الشرائح"
+        >
 
             <button
                 type="button"
-                data-close-palette
-                aria-label="إغلاق">
-                ESC
-            </button>
+                class="slide-dot active"
+                data-slide="home"
+                aria-label="الانتقال إلى الرئيسية"
+                aria-current="true"
+            ></button>
+
+            <button
+                type="button"
+                class="slide-dot"
+                data-slide="identity"
+                aria-label="الانتقال إلى الهوية"
+            ></button>
+
+            <button
+                type="button"
+                class="slide-dot"
+                data-slide="capabilities"
+                aria-label="الانتقال إلى القدرات"
+            ></button>
+
+            <button
+                type="button"
+                class="slide-dot"
+                data-slide="projects"
+                aria-label="الانتقال إلى المشاريع"
+            ></button>
+
+            <button
+                type="button"
+                class="slide-dot"
+                data-slide="ops-center"
+                aria-label="الانتقال إلى العمليات"
+            ></button>
+
+            <button
+                type="button"
+                class="slide-dot"
+                data-slide="lab"
+                aria-label="الانتقال إلى المختبر"
+            ></button>
+
+            <button
+                type="button"
+                class="slide-dot"
+                data-slide="terminal"
+                aria-label="الانتقال إلى Terminal"
+            ></button>
+
         </div>
 
-        <label class="palette-search">
-            <span>⌕</span>
 
-            <input
-                id="palette-input"
-                type="search"
-                placeholder="ابحث عن قسم..."
-                autocomplete="off">
-        </label>
-
-        <div id="palette-results" class="palette-results"></div>
+        <button
+            id="next-slide"
+            type="button"
+            aria-label="الشريحة التالية"
+        >
+            ↓
+        </button>
 
     </div>
 
-</div>
+
+    <!-- =====================================================
+         COMMAND PALETTE
+    ====================================================== -->
+
+    <div
+        id="command-palette"
+        class="command-palette"
+        aria-hidden="true"
+    >
+
+        <div
+            class="command-backdrop"
+            data-command-close
+        ></div>
 
 
-<div class="keyboard-hint">
-    <span>CTRL</span>
-    <b>+</b>
-    <span>K</span>
-    <em>COMMAND</em>
-</div>
+        <div
+            class="command-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="command-title"
+        >
+
+            <div class="command-header">
+
+                <div>
+                    <span class="section-label">
+                        SYSTEM COMMAND
+                    </span>
+
+                    <h2 id="command-title">
+                        COMMAND PALETTE
+                    </h2>
+                </div>
 
 
-<script src="script.js" defer></script>
+                <button
+                    id="command-close"
+                    type="button"
+                    aria-label="إغلاق لوحة الأوامر"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <label
+                for="command-search"
+                class="sr-only"
+            >
+                البحث في الأوامر
+            </label>
+
+            <input
+                id="command-search"
+                type="search"
+                placeholder="ابحث عن قسم أو أمر..."
+                autocomplete="off"
+            >
+
+
+            <div
+                id="command-list"
+                class="command-list"
+            >
+
+                <button
+                    type="button"
+                    data-command-action="home"
+                    data-command-label="الرئيسية"
+                >
+                    <span>01</span>
+                    الرئيسية
+                    <kbd>HOME</kbd>
+                </button>
+
+                <button
+                    type="button"
+                    data-command-action="identity"
+                    data-command-label="الهوية"
+                >
+                    <span>02</span>
+                    الهوية
+                </button>
+
+                <button
+                    type="button"
+                    data-command-action="capabilities"
+                    data-command-label="القدرات"
+                >
+                    <span>03</span>
+                    القدرات
+                </button>
+
+                <button
+                    type="button"
+                    data-command-action="projects"
+                    data-command-label="المشاريع"
+                >
+                    <span>04</span>
+                    المشاريع
+                </button>
+
+                <button
+                    type="button"
+                    data-command-action="ops-center"
+                    data-command-label="العمليات"
+                >
+                    <span>05</span>
+                    العمليات
+                </button>
+
+                <button
+                    type="button"
+                    data-command-action="lab"
+                    data-command-label="المختبر"
+                >
+                    <span>06</span>
+                    المختبر
+                </button>
+
+                <button
+                    type="button"
+                    data-command-action="terminal"
+                    data-command-label="Terminal"
+                >
+                    <span>07</span>
+                    Terminal
+                    <kbd>⌘K</kbd>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER STATUS
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <span>
+            AMEER.SYS
+        </span>
+
+        <span>
+            CYBER ENGINEERING
+        </span>
+
+        <span>
+            © 2026
+        </span>
+
+    </footer>
+
+
+    <!-- Main JavaScript -->
+    <script
+        src="script.js"
+        defer>
+    </script>
 
 </body>
 </html>
