@@ -1,0 +1,13 @@
+{
+    "name": "AMEER.SYS — Cyber Engineering",
+    "short_name": "AMEER.SYS",
+    "description": "Cybersecurity, Mechatronics and IT Engineering Portfolio",
+    "lang": "ar",
+    "dir": "rtl",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#02060b",
+    "theme_color": "#02060b",
+    "orientation": "portrait-primary",
+    "icons": []
+}
