@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- الصفحة الرئيسية -->
     <url>
-        <loc>YOUR_DEPLOYED_DOMAIN_HERE</loc>
+        <loc>https://ameer-alsabri.vercel.app/</loc>
+        <lastmod>2026-09-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
