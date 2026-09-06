@@ -1,433 +1,72 @@
-"use strict";
+/* /script.js */
 
-/* =========================================================
-   AMEER.SYS // PRESENTATION ENGINE
-========================================================= */
+"use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const sections = Array.from(
-        document.querySelectorAll(".page-section")
-    );
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const body = document.body;
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
 
     const navLinks = Array.from(
         document.querySelectorAll(".nav-link")
     );
 
-    const sectionLinks = Array.from(
-        document.querySelectorAll("[data-section-link]")
+    const sections = Array.from(
+        document.querySelectorAll("main section[id]")
     );
 
-    const menuToggle = document.getElementById("menu-toggle");
-    const mainNav = document.getElementById("main-nav");
-
-    const clock = document.getElementById("live-clock");
-    const connectionStatus = document.getElementById("connection-status");
-
-    const previousButton = document.getElementById("prev-slide");
-    const nextButton = document.getElementById("next-slide");
-
-    const slideIndicator = document.getElementById("slide-indicator");
-    const slideDots = document.getElementById("slide-dots");
-
-    const palette = document.getElementById("command-palette");
-    const paletteInput = document.getElementById("palette-input");
-    const paletteResults = document.getElementById("palette-results");
-
-    const terminalForm = document.getElementById("terminal-form");
-    const terminalInput = document.getElementById("terminal-input");
-    const terminalOutput = document.getElementById("terminal-output");
-
-    const cpuValue = document.getElementById("cpu-value");
-    const cpuBar = document.getElementById("cpu-bar");
-    const cpuState = document.getElementById("cpu-state");
-
-    const ramValue = document.getElementById("ram-value");
-    const ramBar = document.getElementById("ram-bar");
-    const ramState = document.getElementById("ram-state");
-
-    const networkState = document.getElementById("network-state");
-    const networkDetail = document.getElementById("network-detail");
-
-    const systemLog = document.getElementById("system-log");
-
-    const sectionData = [
-        {
-            id: "home",
-            title: "الرئيسية",
-            code: "01",
-            description: "AMEER.SYS // Cyber Engineering"
-        },
-        {
-            id: "identity",
-            title: "الهوية",
-            code: "02",
-            description: "Identity Profile"
-        },
-        {
-            id: "capabilities",
-            title: "القدرات",
-            code: "03",
-            description: "Engineering Capabilities"
-        },
-        {
-            id: "projects",
-            title: "المشاريع",
-            code: "04",
-            description: "Project Command Center"
-        },
-        {
-            id: "ops-center",
-            title: "العمليات",
-            code: "05",
-            description: "Cyber Ops Center"
-        },
-        {
-            id: "lab",
-            title: "المختبر",
-            code: "06",
-            description: "Cyber Engineering Lab"
-        },
-        {
-            id: "terminal",
-            title: "Terminal",
-            code: "07",
-            description: "AMEER.SYS Terminal"
-        }
-    ];
-
-    let currentIndex = 0;
-    let wheelLocked = false;
-
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    let telemetryTimer = null;
-    let logTimer = null;
-
-
-    /* =====================================================
-       CLOCK
-    ===================================================== */
-
-    function updateClock() {
-
-        if (!clock) {
-            return;
-        }
-
-        const now = new Date();
-
-        clock.textContent = now.toLocaleTimeString(
-            "en-GB",
-            {
-                hour12: false
-            }
-        );
-    }
-
-    updateClock();
-    setInterval(updateClock, 1000);
-
-
-    /* =====================================================
-       CONNECTION STATUS
-    ===================================================== */
-
-    function updateConnectionStatus() {
-
-        if (!connectionStatus) {
-            return;
-        }
-
-        if (navigator.onLine) {
-            connectionStatus.textContent = "ONLINE";
-            connectionStatus.style.color = "";
-        } else {
-            connectionStatus.textContent = "OFFLINE";
-            connectionStatus.style.color = "var(--danger)";
-        }
-    }
-
-    window.addEventListener("online", updateConnectionStatus);
-    window.addEventListener("offline", updateConnectionStatus);
-
-    updateConnectionStatus();
-
-
-    /* =====================================================
-       PRESENTATION
-    ===================================================== */
-
-    function normalizeSectionIndex(index) {
-
-        if (index < 0) {
-            return sections.length - 1;
-        }
-
-        if (index >= sections.length) {
-            return 0;
-        }
-
-        return index;
-    }
-
-
-    function getIndexFromHash() {
-
-        const hash = window.location.hash.replace("#", "");
-
-        const index = sections.findIndex(
-            section => section.id === hash
-        );
-
-        return index >= 0 ? index : 0;
-    }
-
-
-    function updateNavigation() {
-
-        const currentSection = sections[currentIndex];
-
-        if (!currentSection) {
-            return;
-        }
-
-        navLinks.forEach(link => {
-
-            const active =
-                link.dataset.section === currentSection.id;
-
-            link.classList.toggle("active", active);
-
-            if (active) {
-                link.setAttribute("aria-current", "page");
-            } else {
-                link.removeAttribute("aria-current");
-            }
-        });
-
-
-        if (slideIndicator) {
-
-            const currentNumber = String(
-                currentIndex + 1
-            ).padStart(2, "0");
-
-            const totalNumber = String(
-                sections.length
-            ).padStart(2, "0");
-
-            slideIndicator.innerHTML = `
-                <span>${currentNumber}</span>
-                <i>/</i>
-                <span>${totalNumber}</span>
-            `;
-        }
-
-
-        document.querySelectorAll(".slide-dot")
-            .forEach((dot, index) => {
-
-                dot.classList.toggle(
-                    "active",
-                    index === currentIndex
-                );
-
-                dot.setAttribute(
-                    "aria-current",
-                    index === currentIndex ? "true" : "false"
-                );
-            });
-    }
-
-
-    function activateSection(index, updateHash = true) {
-
-        currentIndex = normalizeSectionIndex(index);
-
-        sections.forEach((section, sectionIndex) => {
-
-            const active = sectionIndex === currentIndex;
-
-            section.classList.toggle("active", active);
-
-            if (active) {
-                section.removeAttribute("aria-hidden");
-            } else {
-                section.setAttribute("aria-hidden", "true");
-            }
-        });
-
-        updateNavigation();
-
-        closeMobileMenu();
-
-        if (updateHash) {
-
-            const targetHash =
-                `#${sections[currentIndex].id}`;
-
-            if (window.location.hash !== targetHash) {
-
-                history.pushState(
-                    null,
-                    "",
-                    targetHash
-                );
-            }
-        }
-
-        if (sections[currentIndex].id === "terminal") {
-
-            window.setTimeout(() => {
-                terminalInput?.focus();
-            }, 300);
-        }
-    }
-
-
-    function goTo(index) {
-
-        activateSection(index, true);
-    }
-
-
-    function nextSection() {
-
-        goTo(currentIndex + 1);
-    }
-
-
-    function previousSection() {
-
-        goTo(currentIndex - 1);
-    }
-
-
-    /* =====================================================
-       SLIDE DOTS
-    ===================================================== */
-
-    function buildSlideDots() {
-
-        if (!slideDots) {
-            return;
-        }
-
-        slideDots.innerHTML = "";
-
-        sections.forEach((section, index) => {
-
-            const button =
-                document.createElement("button");
-
-            button.type = "button";
-            button.className = "slide-dot";
-
-            button.title =
-                sectionData[index]?.title ||
-                section.id;
-
-            button.setAttribute(
-                "aria-label",
-                `الانتقال إلى ${sectionData[index]?.title || section.id}`
-            );
-
-            button.addEventListener(
-                "click",
-                () => goTo(index)
-            );
-
-            slideDots.appendChild(button);
-        });
-    }
-
-
-    buildSlideDots();
-
-
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
-
-    navLinks.forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            event.preventDefault();
-
-            const id = link.dataset.section;
-
-            const index = sections.findIndex(
-                section => section.id === id
-            );
-
-            if (index >= 0) {
-                goTo(index);
-            }
-        });
-    });
-
-
-    sectionLinks.forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            event.preventDefault();
-
-            const id =
-                link.dataset.sectionLink;
-
-            const index = sections.findIndex(
-                section => section.id === id
-            );
-
-            if (index >= 0) {
-                goTo(index);
-            }
-        });
-    });
-
-
-    previousButton?.addEventListener(
-        "click",
-        previousSection
+    const revealElements = Array.from(
+        document.querySelectorAll(".reveal")
     );
 
-    nextButton?.addEventListener(
-        "click",
-        nextSection
-    );
+    const backTop = document.getElementById("backTop");
+    const currentYear = document.getElementById("currentYear");
 
 
-    window.addEventListener(
-        "popstate",
-        () => {
-            activateSection(
-                getIndexFromHash(),
-                false
-            );
-        }
-    );
+    /* =========================
+       YEAR
+    ========================= */
+
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
 
 
-    window.addEventListener(
-        "hashchange",
-        () => {
-            activateSection(
-                getIndexFromHash(),
-                false
-            );
-        }
-    );
-
-
-    /* =====================================================
+    /* =========================
        MOBILE MENU
-    ===================================================== */
+    ========================= */
 
-    function closeMobileMenu() {
+    function openMenu() {
+
+        if (!mainNav || !menuToggle) {
+            return;
+        }
+
+        mainNav.classList.add("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "إغلاق القائمة"
+        );
+
+        menuToggle.innerHTML = '<span aria-hidden="true">×</span>';
+
+        body.classList.add("menu-open");
+    }
+
+
+    function closeMenu() {
 
         if (!mainNav || !menuToggle) {
             return;
@@ -439,786 +78,320 @@ document.addEventListener("DOMContentLoaded", () => {
             "aria-expanded",
             "false"
         );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "فتح القائمة"
+        );
+
+        menuToggle.innerHTML = '<span aria-hidden="true">☰</span>';
+
+        body.classList.remove("menu-open");
     }
 
 
-    menuToggle?.addEventListener(
-        "click",
-        () => {
+    function toggleMenu() {
 
-            const isOpen =
-                mainNav.classList.toggle("open");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
+        if (!mainNav) {
+            return;
         }
-    );
 
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            if (
-                mainNav &&
-                menuToggle &&
-                mainNav.classList.contains("open") &&
-                !mainNav.contains(event.target) &&
-                !menuToggle.contains(event.target)
-            ) {
-                closeMobileMenu();
-            }
+        if (mainNav.classList.contains("open")) {
+            closeMenu();
+        } else {
+            openMenu();
         }
-    );
+    }
 
 
-    /* =====================================================
-       KEYBOARD
-    ===================================================== */
+    if (menuToggle) {
+
+        menuToggle.addEventListener(
+            "click",
+            toggleMenu
+        );
+    }
+
+
+    /* =========================
+       CLOSE MENU AFTER CLICK
+    ========================= */
+
+    navLinks.forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            closeMenu();
+
+        });
+
+    });
+
+
+    /* =========================
+       ESCAPE KEY
+    ========================= */
 
     document.addEventListener(
         "keydown",
-        event => {
-
-            const tag =
-                event.target?.tagName?.toLowerCase();
-
-            const typing =
-                tag === "input" ||
-                tag === "textarea" ||
-                tag === "select";
-
-            if (
-                event.key === "ArrowDown" ||
-                event.key === "PageDown"
-            ) {
-
-                if (!typing) {
-                    event.preventDefault();
-                    nextSection();
-                }
-
-                return;
-            }
-
-
-            if (
-                event.key === "ArrowUp" ||
-                event.key === "PageUp"
-            ) {
-
-                if (!typing) {
-                    event.preventDefault();
-                    previousSection();
-                }
-
-                return;
-            }
-
-
-            if (event.key === "Home" && !typing) {
-
-                event.preventDefault();
-                goTo(0);
-
-                return;
-            }
-
-
-            if (event.key === "End" && !typing) {
-
-                event.preventDefault();
-                goTo(sections.length - 1);
-
-                return;
-            }
-
-
-            if (
-                (event.ctrlKey || event.metaKey) &&
-                event.key.toLowerCase() === "k"
-            ) {
-
-                event.preventDefault();
-
-                openPalette();
-            }
-
+        (event) => {
 
             if (event.key === "Escape") {
-
-                closePalette();
-                closeMobileMenu();
+                closeMenu();
             }
+
         }
     );
 
 
-    /* =====================================================
-       WHEEL NAVIGATION
-    ===================================================== */
+    /* =========================
+       CLOSE MENU WHEN CLICKING
+       OUTSIDE IT
+    ========================= */
 
-    window.addEventListener(
-        "wheel",
-        event => {
+    document.addEventListener(
+        "click",
+        (event) => {
 
             if (
-                window.innerWidth <= 900 &&
-                event.target.closest(".page-section") &&
-                event.target.closest(".page-section").scrollHeight >
-                event.target.closest(".page-section").clientHeight
+                !mainNav ||
+                !menuToggle ||
+                !mainNav.classList.contains("open")
             ) {
                 return;
             }
 
-            if (wheelLocked) {
-                return;
+            const target = event.target;
+
+            if (
+                target instanceof Node &&
+                !mainNav.contains(target) &&
+                !menuToggle.contains(target)
+            ) {
+                closeMenu();
             }
 
-            if (Math.abs(event.deltaY) < 25) {
-                return;
-            }
+        }
+    );
 
-            wheelLocked = true;
 
-            if (event.deltaY > 0) {
-                nextSection();
-            } else {
-                previousSection();
-            }
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================= */
 
-            window.setTimeout(
-                () => {
-                    wheelLocked = false;
-                },
-                650
+    function setActiveLink(sectionId) {
+
+        navLinks.forEach((link) => {
+
+            const target =
+                link.getAttribute("href");
+
+            const isActive =
+                target === `#${sectionId}`;
+
+            link.classList.toggle(
+                "active",
+                isActive
             );
-        },
-        {
-            passive: true
-        }
-    );
 
-
-    /* =====================================================
-       TOUCH / SWIPE
-    ===================================================== */
-
-    main?.addEventListener(
-        "touchstart",
-        event => {
-
-            const touch = event.changedTouches[0];
-
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    main?.addEventListener(
-        "touchend",
-        event => {
-
-            const touch = event.changedTouches[0];
-
-            const deltaX =
-                touch.clientX - touchStartX;
-
-            const deltaY =
-                touch.clientY - touchStartY;
-
-            const horizontal =
-                Math.abs(deltaX) >
-                Math.abs(deltaY);
-
-            if (!horizontal) {
-                return;
-            }
-
-            if (Math.abs(deltaX) < 55) {
-                return;
-            }
-
-            if (deltaX < 0) {
-                nextSection();
-            } else {
-                previousSection();
-            }
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    /* =====================================================
-       TELEMETRY
-    ===================================================== */
-
-    function randomBetween(min, max) {
-
-        return Math.floor(
-            Math.random() * (max - min + 1)
-        ) + min;
+        });
     }
 
 
-    function updateTelemetry() {
+    if ("IntersectionObserver" in window) {
 
-        if (!cpuValue || !ramValue) {
-            return;
-        }
+        const sectionObserver =
+            new IntersectionObserver(
+                (entries) => {
 
-        const cpu =
-            randomBetween(8, 42);
+                    entries.forEach((entry) => {
 
-        const ram =
-            randomBetween(48, 72);
+                        if (entry.isIntersecting) {
 
-        cpuValue.textContent =
-            `${cpu}%`;
+                            setActiveLink(
+                                entry.target.id
+                            );
 
-        ramValue.textContent =
-            `${ram}%`;
+                        }
 
-        cpuBar.style.width =
-            `${cpu}%`;
+                    });
 
-        ramBar.style.width =
-            `${ram}%`;
+                },
+                {
+                    root: null,
 
-        cpuState.textContent =
-            cpu > 35 ? "BUSY" : "NORMAL";
+                    rootMargin:
+                        "-30% 0px -55% 0px",
 
-        ramState.textContent =
-            ram > 68 ? "HIGH" : "STABLE";
+                    threshold: 0
+                }
+            );
+
+        sections.forEach((section) => {
+
+            sectionObserver.observe(section);
+
+        });
+
     }
 
 
-    updateTelemetry();
+    /* =========================
+       REVEAL ON SCROLL
+    ========================= */
 
-    telemetryTimer =
-        window.setInterval(
-            updateTelemetry,
-            2200
-        );
+    if (
+        "IntersectionObserver" in window &&
+        revealElements.length
+    ) {
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach((entry) => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    });
+
+                },
+                {
+                    root: null,
+
+                    rootMargin:
+                        "0px 0px -50px 0px",
+
+                    threshold: 0.08
+                }
+            );
+
+        revealElements.forEach((element) => {
+
+            revealObserver.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach((element) => {
+
+            element.classList.add("visible");
+
+        });
+
+    }
 
 
-    /* =====================================================
-       NETWORK INFO
-    ===================================================== */
+    /* =========================
+       BACK TO TOP
+    ========================= */
 
-    function updateNetworkInfo() {
+    function updateBackTop() {
 
-        if (!networkState || !networkDetail) {
+        if (!backTop) {
             return;
         }
 
-        if (!navigator.onLine) {
+        if (window.scrollY > 450) {
 
-            networkState.textContent = "OFFLINE";
-            networkState.style.color =
-                "var(--danger)";
-
-            networkDetail.textContent =
-                "CHANNEL // DISCONNECTED";
-
-            return;
-        }
-
-        networkState.textContent = "SECURE";
-        networkState.style.color =
-            "var(--green)";
-
-        const connection =
-            navigator.connection ||
-            navigator.mozConnection ||
-            navigator.webkitConnection;
-
-        if (
-            connection &&
-            connection.effectiveType
-        ) {
-
-            networkDetail.textContent =
-                `CHANNEL // ${connection.effectiveType.toUpperCase()}`;
+            backTop.classList.add("show");
 
         } else {
 
-            networkDetail.textContent =
-                "CHANNEL // ENCRYPTED";
+            backTop.classList.remove("show");
+
         }
     }
 
-
-    updateNetworkInfo();
 
     window.addEventListener(
-        "online",
-        updateNetworkInfo
-    );
-
-    window.addEventListener(
-        "offline",
-        updateNetworkInfo
-    );
-
-
-    /* =====================================================
-       SYSTEM LOG
-    ===================================================== */
-
-    const logMessages = [
-        ["[SYSTEM]", "Presentation engine synchronized."],
-        ["[NETWORK]", "Network interface status refreshed."],
-        ["[SECURITY]", "Threat monitoring module active."],
-        ["[ENGINE]", "Cyber engineering environment ready."],
-        ["[SYSTEM]", "Telemetry cycle completed."],
-        ["[SECURITY]", "No simulated threats detected."]
-    ];
-
-    let logIndex = 0;
-
-
-    function addSystemLog() {
-
-        if (!systemLog) {
-            return;
-        }
-
-        const [type, message] =
-            logMessages[logIndex];
-
-        logIndex =
-            (logIndex + 1) %
-            logMessages.length;
-
-        const row =
-            document.createElement("p");
-
-        const typeElement =
-            document.createElement("span");
-
-        typeElement.textContent =
-            type;
-
-        row.appendChild(typeElement);
-
-        row.append(
-            document.createTextNode(
-                ` ${message}`
-            )
-        );
-
-        systemLog.appendChild(row);
-
-        while (
-            systemLog.children.length > 7
-        ) {
-            systemLog.removeChild(
-                systemLog.firstElementChild
-            );
-        }
-    }
-
-
-    logTimer =
-        window.setInterval(
-            addSystemLog,
-            4200
-        );
-
-
-    /* =====================================================
-       COMMAND PALETTE
-    ===================================================== */
-
-    let paletteSelection = 0;
-
-
-    function renderPaletteResults(
-        query = ""
-    ) {
-
-        if (!paletteResults) {
-            return;
-        }
-
-        const normalized =
-            query.trim().toLowerCase();
-
-        const results =
-            sectionData.filter(item => {
-
-                return (
-                    item.title.toLowerCase().includes(normalized) ||
-                    item.description.toLowerCase().includes(normalized) ||
-                    item.id.toLowerCase().includes(normalized)
-                );
-            });
-
-        paletteResults.innerHTML = "";
-
-        paletteSelection = 0;
-
-        results.forEach(
-            (item, index) => {
-
-                const button =
-                    document.createElement("button");
-
-                button.type = "button";
-                button.className =
-                    "palette-item";
-
-                if (index === 0) {
-                    button.classList.add("selected");
-                }
-
-                const title =
-                    document.createElement("strong");
-
-                title.textContent =
-                    item.title;
-
-                const code =
-                    document.createElement("span");
-
-                code.textContent =
-                    item.code;
-
-                button.appendChild(title);
-                button.appendChild(code);
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        const sectionIndex =
-                            sections.findIndex(
-                                section =>
-                                    section.id === item.id
-                            );
-
-                        if (sectionIndex >= 0) {
-                            goTo(sectionIndex);
-                            closePalette();
-                        }
-                    }
-                );
-
-                paletteResults.appendChild(
-                    button
-                );
-            }
-        );
-    }
-
-
-    function openPalette() {
-
-        if (!palette) {
-            return;
-        }
-
-        palette.hidden = false;
-
-        renderPaletteResults();
-
-        window.setTimeout(
-            () => {
-                paletteInput?.focus();
-            },
-            50
-        );
-    }
-
-
-    function closePalette() {
-
-        if (!palette) {
-            return;
-        }
-
-        palette.hidden = true;
-
-        if (paletteInput) {
-            paletteInput.value = "";
-        }
-    }
-
-
-    paletteInput?.addEventListener(
-        "input",
-        event => {
-
-            renderPaletteResults(
-                event.target.value
-            );
+        "scroll",
+        updateBackTop,
+        {
+            passive: true
         }
     );
 
 
-    paletteInput?.addEventListener(
-        "keydown",
-        event => {
+    if (backTop) {
 
-            const items =
-                Array.from(
-                    paletteResults.querySelectorAll(
-                        ".palette-item"
-                    )
-                );
-
-            if (!items.length) {
-                return;
-            }
-
-            if (event.key === "ArrowDown") {
-
-                event.preventDefault();
-
-                paletteSelection =
-                    Math.min(
-                        paletteSelection + 1,
-                        items.length - 1
-                    );
-            }
-
-            if (event.key === "ArrowUp") {
-
-                event.preventDefault();
-
-                paletteSelection =
-                    Math.max(
-                        paletteSelection - 1,
-                        0
-                    );
-            }
-
-            if (event.key === "Enter") {
-
-                event.preventDefault();
-
-                items[
-                    paletteSelection
-                ]?.click();
-
-                return;
-            }
-
-            items.forEach(
-                (item, index) => {
-
-                    item.classList.toggle(
-                        "selected",
-                        index === paletteSelection
-                    );
-                }
-            );
-        }
-    );
-
-
-    document.querySelectorAll(
-        "[data-close-palette]"
-    ).forEach(element => {
-
-        element.addEventListener(
-            "click",
-            closePalette
-        );
-    });
-
-
-    /* =====================================================
-       TERMINAL
-    ===================================================== */
-
-    const terminalCommands = {
-
-        help: () => [
-            "Available commands:",
-            "about    → identity profile",
-            "skills   → engineering capabilities",
-            "projects → project list",
-            "status   → system status",
-            "contact  → contact information",
-            "clear    → clear terminal"
-        ],
-
-        about: () => [
-            "AMEER.SYS",
-            "Cyber Engineering / Digital Systems",
-            "Cybersecurity × Mechatronics × IT"
-        ],
-
-        skills: () => [
-            "CYBERSECURITY",
-            "MECHATRONICS",
-            "IT SYSTEMS",
-            "NETWORK SECURITY",
-            "NIST MINDSET",
-            "DIGITAL ENGINEERING"
-        ],
-
-        projects: () => [
-            "PROJ-001 // ICS SHIELD",
-            "PROJ-002 // CYBER-MECH"
-        ],
-
-        status: () => [
-            `SYSTEM: ONLINE`,
-            `NETWORK: ${navigator.onLine ? "ONLINE" : "OFFLINE"}`,
-            "SECURITY: ACTIVE",
-            "THREAT LEVEL: LOW",
-            "ENVIRONMENT: SIMULATED"
-        ],
-
-        contact: () => [
-            "Public contact endpoint is not configured.",
-            "Add your preferred contact information to index.html."
-        ]
-    };
-
-
-    function addTerminalLine(
-        text,
-        className = ""
-    ) {
-
-        const line =
-            document.createElement("div");
-
-        if (className) {
-            line.className = className;
-        }
-
-        line.textContent = text;
-
-        terminalOutput.appendChild(line);
-
-        terminalOutput.scrollTop =
-            terminalOutput.scrollHeight;
-    }
-
-
-    function runCommand(command) {
-
-        const normalized =
-            command.trim().toLowerCase();
-
-        if (!normalized) {
-            return;
-        }
-
-        addTerminalLine(
-            `ameer@sys:~$ ${command}`,
-            "terminal-green"
-        );
-
-        if (normalized === "clear") {
-
-            terminalOutput.innerHTML = "";
-
-            return;
-        }
-
-
-        if (terminalCommands[normalized]) {
-
-            const result =
-                terminalCommands[normalized]();
-
-            result.forEach(
-                line => addTerminalLine(line)
-            );
-
-            return;
-        }
-
-
-        addTerminalLine(
-            `command not found: ${command}`
-        );
-
-        addTerminalLine(
-            "Type 'help' for available commands."
-        );
-    }
-
-
-    terminalForm?.addEventListener(
-        "submit",
-        event => {
-
-            event.preventDefault();
-
-            const command =
-                terminalInput.value;
-
-            runCommand(command);
-
-            terminalInput.value = "";
-        }
-    );
-
-
-    document.querySelectorAll(
-        "[data-command]"
-    ).forEach(button => {
-
-        button.addEventListener(
+        backTop.addEventListener(
             "click",
             () => {
 
-                const command =
-                    button.dataset.command;
+                const reduceMotion =
+                    window.matchMedia(
+                        "(prefers-reduced-motion: reduce)"
+                    ).matches;
 
-                if (terminalInput) {
-                    terminalInput.value =
-                        command;
+                window.scrollTo({
+                    top: 0,
 
-                    terminalInput.focus();
-                }
+                    behavior:
+                        reduceMotion
+                            ? "auto"
+                            : "smooth"
+                });
 
-                runCommand(command);
-
-                if (terminalInput) {
-                    terminalInput.value = "";
-                }
             }
         );
-    });
+
+    }
 
 
-    /* =====================================================
-       INITIALIZE
-    ===================================================== */
+    /* =========================
+       RESPONSIVE MENU SAFETY
+    ========================= */
 
-    activateSection(
-        getIndexFromHash(),
-        false
-    );
+    const mobileBreakpoint =
+        window.matchMedia("(max-width: 800px)");
 
-    window.addEventListener(
-        "beforeunload",
-        () => {
+    function handleViewportChange(event) {
 
-            if (telemetryTimer) {
-                clearInterval(telemetryTimer);
-            }
-
-            if (logTimer) {
-                clearInterval(logTimer);
-            }
+        if (!event.matches) {
+            closeMenu();
         }
-    );
+
+    }
+
+
+    if (
+        typeof mobileBreakpoint.addEventListener ===
+        "function"
+    ) {
+
+        mobileBreakpoint.addEventListener(
+            "change",
+            handleViewportChange
+        );
+
+    } else if (
+        typeof mobileBreakpoint.addListener ===
+        "function"
+    ) {
+
+        mobileBreakpoint.addListener(
+            handleViewportChange
+        );
+
+    }
+
+
+    /* =========================
+       INITIAL STATE
+    ========================= */
+
+    updateBackTop();
 
 });
