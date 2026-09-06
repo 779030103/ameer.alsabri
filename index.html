@@ -1,679 +1,693 @@
 <!-- /index.html -->
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, viewport-fit=cover"
-    >
-
-    <meta
-        name="description"
-        content="أمير الصبري — مستشار قانوني وعلاقات عامة، رائد أعمال يمني، خبير في التقنية والمعلومات والأمن السيبراني، وخبير في هندسة الميكاترونكس وناشط في التجارة الإلكترونية."
-    >
-
-    <meta
-        name="keywords"
-        content="أمير الصبري, مستشار قانوني, علاقات عامة, رائد أعمال يمني, الأمن السيبراني, تقنية المعلومات, هندسة الميكاترونكس, التجارة الإلكترونية"
-    >
-
+    <meta name="description" content="أمير الصبري — مستشار قانوني وعلاقات عامة، رائد أعمال يمني، وخبير في التقنية والمعلومات والأمن السيبراني وهندسة الميكاترونكس والتجارة الإلكترونية.">
+    <meta name="keywords" content="أمير الصبري, مستشار قانوني, علاقات عامة, رائد أعمال يمني, الأمن السيبراني, تقنية المعلومات, هندسة الميكاترونكس, التجارة الإلكترونية">
     <meta name="author" content="أمير الصبري">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#071019">
+    <meta name="theme-color" content="#070b12">
     <meta name="color-scheme" content="dark">
 
     <link rel="canonical" href="https://ameer-alsabri.vercel.app/">
+    <link rel="preload" href="assets/fonts/custom-font.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
 
-    <link
-        rel="preload"
-        href="assets/fonts/custom-font.ttf"
-        as="font"
-        type="font/ttf"
-        crossorigin
-    >
-
-    <link
-        rel="icon"
-        type="image/svg+xml"
-        href="favicon.svg"
-    >
-
-    <link
-        rel="manifest"
-        href="manifest.webmanifest"
-    >
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ar_AR">
-    <meta property="og:title" content="أمير الصبري | مستشار ورائد أعمال">
-    <meta
-        property="og:description"
-        content="الموقع الشخصي لأمير الصبري — مستشار قانوني وعلاقات عامة ورائد أعمال يمني وخبير في التقنية والأمن السيبراني والميكاترونكس والتجارة الإلكترونية."
-    >
+    <meta property="og:title" content="أمير الصبري | المستشار ورائد الأعمال">
+    <meta property="og:description" content="الموقع الشخصي لأمير الصبري — قانون، أعمال، تقنية، أمن سيبراني، ميكاترونكس وتجارة إلكترونية.">
     <meta property="og:url" content="https://ameer-alsabri.vercel.app/">
     <meta property="og:image" content="https://ameer-alsabri.vercel.app/profile.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="أمير الصبري | مستشار ورائد أعمال">
-    <meta
-        name="twitter:description"
-        content="مستشار قانوني وعلاقات عامة ورائد أعمال يمني وخبير في التقنية والأمن السيبراني والميكاترونكس والتجارة الإلكترونية."
-    >
-    <meta
-        name="twitter:image"
-        content="https://ameer-alsabri.vercel.app/profile.jpg"
-    >
+    <meta name="twitter:title" content="أمير الصبري | المستشار ورائد الأعمال">
+    <meta name="twitter:description" content="مستشار قانوني وعلاقات عامة ورائد أعمال يمني وخبير متعدد التخصصات.">
+    <meta name="twitter:image" content="https://ameer-alsabri.vercel.app/profile.jpg">
 
-    <title>أمير الصبري | مستشار ورائد أعمال</title>
+    <title>أمير الصبري | المستشار ورائد الأعمال</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <a class="skip-link" href="#main-content">
-        الانتقال إلى المحتوى
-    </a>
+<a class="skip-link" href="#main-content">
+    الانتقال إلى المحتوى
+</a>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container header-inner">
+<header class="site-header" id="top">
+    <div class="container header-inner">
 
-            <a
-                class="brand"
-                href="#home"
-                aria-label="العودة إلى الصفحة الرئيسية"
-            >
-                <span class="brand-mark" aria-hidden="true">أ</span>
+        <a class="brand" href="#home" aria-label="أمير الصبري - الرئيسية">
+            <span class="brand-mark">أ</span>
 
-                <span class="brand-text">
-                    <strong>أمير الصبري</strong>
-                    <span>AMEER.SYS · Personal Portfolio</span>
-                </span>
+            <span class="brand-copy">
+                <strong>أمير الصبري</strong>
+                <small>AMEER.SYS</small>
+            </span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mainNav"
+            aria-label="فتح القائمة"
+        >
+            <span>☰</span>
+        </button>
+
+        <nav class="nav" id="mainNav" aria-label="التنقل الرئيسي">
+
+            <a class="nav-link active" href="#home">
+                الرئيسية
             </a>
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="فتح القائمة"
-                aria-expanded="false"
-                aria-controls="mainNav"
-            >
-                <span aria-hidden="true">☰</span>
-            </button>
+            <a class="nav-link" href="#about">
+                من أنا
+            </a>
 
-            <nav
-                class="nav"
-                id="mainNav"
-                aria-label="التنقل الرئيسي"
-            >
-                <a class="nav-link active" href="#home">الرئيسية</a>
-                <a class="nav-link" href="#about">عني</a>
-                <a class="nav-link" href="#expertise">الخبرات</a>
-                <a class="nav-link" href="#work">مجالات العمل</a>
-                <a class="nav-link" href="#contact">تواصل</a>
-            </nav>
+            <a class="nav-link" href="#expertise">
+                الخبرات
+            </a>
+
+            <a class="nav-link" href="#journey">
+                الرؤية
+            </a>
+
+            <a class="nav-link" href="#contact">
+                تواصل
+            </a>
+
+        </nav>
+
+    </div>
+</header>
+
+
+<main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+
+        <div class="hero-glow glow-one"></div>
+        <div class="hero-glow glow-two"></div>
+
+        <div class="container hero-inner">
+
+            <!-- الصورة أولاً -->
+            <div class="portrait-stage reveal">
+
+                <div class="portrait-ring ring-one"></div>
+                <div class="portrait-ring ring-two"></div>
+
+                <div class="portrait-frame">
+
+                    <img
+                        src="profile.jpg"
+                        alt="صورة شخصية لأمير الصبري"
+                        width="720"
+                        height="900"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+
+                    <span class="portrait-status">
+                        <i></i>
+                        متاح للتواصل
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- البيانات أسفل الصورة -->
+            <div class="hero-identity reveal reveal-delay-1">
+
+                <p class="eyebrow">
+                    <span></span>
+                    الملف الشخصي الرقمي
+                </p>
+
+                <h1 id="hero-title">
+                    أمير <em>الصبري</em>
+                </h1>
+
+                <p class="hero-role">
+                    مستشار قانوني وعلاقات عامة
+                    <b>·</b>
+                    رائد أعمال يمني
+                </p>
+
+                <p class="hero-description">
+                    شخصية متعددة التخصصات تجمع بين القانون والأعمال
+                    والتقنية والهندسة، مع اهتمام ببناء حلول عملية وآمنة
+                    ذات أثر حقيقي.
+                </p>
+
+
+                <div class="identity-chips" aria-label="الهوية المهنية">
+
+                    <span>مستشار قانوني وعلاقات عامة</span>
+                    <span>رائد أعمال يمني</span>
+                    <span>خبير تقنية ومعلومات</span>
+                    <span>أمن سيبراني</span>
+                    <span>هندسة ميكاترونكس</span>
+                    <span>التجارة الإلكترونية</span>
+
+                </div>
+
+
+                <div class="hero-actions">
+
+                    <a class="btn btn-primary" href="#expertise">
+                        استكشف الخبرات
+                        <span>←</span>
+                    </a>
+
+                    <a class="btn btn-ghost" href="#about">
+                        اكتشف قصتي
+                        <span>↓</span>
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
-    </header>
 
-    <main id="main-content">
-
-        <!-- Hero -->
-        <section
-            class="hero"
-            id="home"
-            aria-labelledby="hero-title"
+        <a
+            class="scroll-cue"
+            href="#about"
+            aria-label="انتقل إلى القسم التالي"
         >
-            <div class="container hero-grid">
+            <span></span>
+            اكتشف المزيد
+        </a>
 
-                <div class="hero-content reveal">
+    </section>
 
-                    <p class="eyebrow">
-                        مستشار · رائد أعمال · خبير تقني
+
+    <!-- ABOUT -->
+    <section
+        class="section about-section"
+        id="about"
+        aria-labelledby="about-title"
+    >
+
+        <div class="container">
+
+            <div class="section-intro reveal">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+                    <p class="section-kicker">
+                        من أنا
                     </p>
 
-                    <h1 id="hero-title">
-                        أمير <span>الصبري</span>
-                    </h1>
+                    <h2 id="about-title">
+                        أكثر من تخصص،
+                        <br>
+                        <strong>رؤية واحدة.</strong>
+                    </h2>
+                </div>
 
-                    <h2 class="hero-title">
-                        مستشار قانوني وعلاقات عامة<br>
-                        <strong>ورائد أعمال يمني</strong>
+                <p class="section-lead">
+                    أبني هويتي المهنية عند نقطة التقاء المعرفة
+                    القانونية، التفكير التجاري، الحلول التقنية والهندسة.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <article class="statement-card reveal">
+
+                    <span class="quote-mark">
+                        “
+                    </span>
+
+                    <p>
+                        أؤمن أن التقنية لا تكون عظيمة لمجرد أنها متقدمة؛
+                        بل عندما تكون
+                        <strong>
+                            مفهومة، آمنة، مفيدة وقابلة للحياة.
+                        </strong>
+                    </p>
+
+                    <div class="signature">
+                        <span></span>
+                        أمير الصبري
+                    </div>
+
+                </article>
+
+
+                <div class="principles reveal reveal-delay-1">
+
+                    <div class="principle">
+                        <b>01</b>
+
+                        <div>
+                            <h3>وضوح</h3>
+
+                            <p>
+                                تبسيط الأفكار والمشكلات المعقدة إلى
+                                قرارات قابلة للتنفيذ.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="principle">
+                        <b>02</b>
+
+                        <div>
+                            <h3>مسؤولية</h3>
+
+                            <p>
+                                العمل بعقلية مهنية تحترم القانون
+                                والخصوصية والأمان.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="principle">
+                        <b>03</b>
+
+                        <div>
+                            <h3>ابتكار</h3>
+
+                            <p>
+                                ربط المعرفة من مجالات مختلفة لصناعة
+                                حلول أكثر ذكاءً.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERTISE -->
+    <section
+        class="section expertise-section"
+        id="expertise"
+        aria-labelledby="expertise-title"
+    >
+
+        <div class="container">
+
+            <div class="section-intro compact reveal">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <p class="section-kicker">
+                        الخبرات
+                    </p>
+
+                    <h2 id="expertise-title">
+                        اختر مجالًا
+                        <br>
+                        <strong>واكتشفه.</strong>
                     </h2>
 
-                    <p class="hero-copy">
-                        أعمل عند تقاطع القانون والأعمال والتقنية والهندسة،
-                        وأسعى إلى تحويل الأفكار المعقدة إلى حلول واضحة،
-                        عملية، وذات قيمة حقيقية.
+                </div>
+
+                <p class="section-lead">
+                    اضغط على أي مجال لعرض التفاصيل دون مغادرة الصفحة.
+                </p>
+
+            </div>
+
+
+            <div class="expertise-explorer reveal">
+
+                <div
+                    class="expertise-tabs"
+                    role="tablist"
+                    aria-label="مجالات الخبرة"
+                >
+
+                    <button
+                        class="expertise-tab active"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        data-expertise="law"
+                    >
+                        <span>01</span>
+                        القانون والعلاقات
+                    </button>
+
+                    <button
+                        class="expertise-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-expertise="business"
+                    >
+                        <span>02</span>
+                        ريادة الأعمال
+                    </button>
+
+                    <button
+                        class="expertise-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-expertise="tech"
+                    >
+                        <span>03</span>
+                        التقنية والمعلومات
+                    </button>
+
+                    <button
+                        class="expertise-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-expertise="cyber"
+                    >
+                        <span>04</span>
+                        الأمن السيبراني
+                    </button>
+
+                    <button
+                        class="expertise-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-expertise="mechatronics"
+                    >
+                        <span>05</span>
+                        الميكاترونكس
+                    </button>
+
+                    <button
+                        class="expertise-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        data-expertise="commerce"
+                    >
+                        <span>06</span>
+                        التجارة الإلكترونية
+                    </button>
+
+                </div>
+
+
+                <article
+                    class="expertise-display"
+                    id="expertiseDisplay"
+                    role="tabpanel"
+                    aria-live="polite"
+                >
+
+                    <div
+                        class="display-number"
+                        id="displayNumber"
+                    >
+                        01
+                    </div>
+
+                    <p
+                        class="display-label"
+                        id="displayLabel"
+                    >
+                        LAW · PUBLIC RELATIONS
                     </p>
 
-                    <div class="identity-tags" aria-label="مجالات التخصص">
-                        <span>القانون والعلاقات العامة</span>
-                        <span>ريادة الأعمال</span>
-                        <span>الأمن السيبراني</span>
-                        <span>الميكاترونكس</span>
-                        <span>التجارة الإلكترونية</span>
-                    </div>
+                    <h3 id="displayTitle">
+                        القانون والعلاقات العامة
+                    </h3>
 
-                    <div class="actions">
-
-                        <a
-                            class="btn btn-primary"
-                            href="#about"
-                        >
-                            تعرف عليّ
-                        </a>
-
-                        <a
-                            class="btn"
-                            href="#expertise"
-                        >
-                            استكشف خبراتي
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <div class="profile-card reveal">
-
-                    <div class="profile-photo">
-                        <img
-                            src="profile.jpg"
-                            alt="صورة شخصية لأمير الصبري"
-                            width="720"
-                            height="900"
-                            fetchpriority="high"
-                            decoding="async"
-                        >
-                    </div>
-
-                    <div class="profile-caption">
-                        <span>Yemeni Entrepreneur</span>
-                        <strong>AMEER.SYS</strong>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- About -->
-        <section
-            class="section"
-            id="about"
-            aria-labelledby="about-title"
-        >
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <div>
-                        <p class="section-kicker">01 · عني</p>
-                        <h2 id="about-title">شخصية تجمع بين أكثر من عالم</h2>
-                    </div>
-
-                    <p>
-                        لا أتعامل مع التخصصات كجزر منفصلة، بل أبحث عن
-                        المساحة التي يمكن أن تعمل فيها المعرفة القانونية
-                        والتجارية والتقنية والهندسية معًا.
+                    <p id="displayText">
+                        مستشار قانوني وعلاقات عامة، مع اهتمام بفهم
+                        الأبعاد القانونية والإدارية وبناء التواصل
+                        المهني والعلاقات التي تدعم الأعمال والمشروعات.
                     </p>
 
-                </div>
-
-                <div class="identity-box">
-
-                    <article class="card intro-card reveal">
-
-                        <p class="intro-label">
-                            من أنا؟
-                        </p>
-
-                        <h3>
-                            رؤية عملية تتجاوز حدود التخصص الواحد
-                        </h3>
-
-                        <p>
-                            أنا أمير الصبري، مستشار قانوني وعلاقات عامة
-                            ورائد أعمال يمني، أمتلك اهتمامًا وخبرة في
-                            المجالات التقنية والمعلوماتية والأمن السيبراني
-                            وهندسة الميكاترونكس، إلى جانب نشاطي في مجال
-                            التجارة الإلكترونية.
-                        </p>
-
-                        <p>
-                            أؤمن بأن أفضل الحلول هي التي تجمع بين الفهم
-                            العميق للمشكلة، والقدرة على تنفيذ الحل،
-                            والاهتمام الحقيقي بتجربة الإنسان الذي سيستخدمه.
-                        </p>
-
-                    </article>
-
-                    <div class="values">
-
-                        <article class="card value reveal">
-                            <span>01</span>
-                            <h3>وضوح</h3>
-                            <p>
-                                تبسيط الأفكار والمشكلات المعقدة وتحويلها
-                                إلى خطوات مفهومة.
-                            </p>
-                        </article>
-
-                        <article class="card value reveal">
-                            <span>02</span>
-                            <h3>ابتكار</h3>
-                            <p>
-                                البحث عن حلول جديدة تجمع بين التقنية
-                                والأعمال والهندسة.
-                            </p>
-                        </article>
-
-                        <article class="card value reveal">
-                            <span>03</span>
-                            <h3>مسؤولية</h3>
-                            <p>
-                                التعامل مع المعرفة والتقنية بمنهج مهني
-                                ومسؤول.
-                            </p>
-                        </article>
-
-                        <article class="card value reveal">
-                            <span>04</span>
-                            <h3>تطوير مستمر</h3>
-                            <p>
-                                التعلم المستمر ومواكبة التحولات في عالم
-                                التقنية والأعمال.
-                            </p>
-                        </article>
-
+                    <div
+                        class="display-tags"
+                        id="displayTags"
+                    >
+                        <span>استشارات</span>
+                        <span>علاقات عامة</span>
+                        <span>تواصل مهني</span>
                     </div>
 
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- Expertise -->
-        <section
-            class="section section-alt"
-            id="expertise"
-            aria-labelledby="expertise-title"
-        >
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <div>
-                        <p class="section-kicker">02 · الخبرات</p>
-                        <h2 id="expertise-title">مجالات أعمل فيها</h2>
+                    <div class="display-line">
+                        <span></span>
                     </div>
 
-                    <p>
-                        مجموعة من المجالات التي تشكل هويتي المهنية
-                        وتمنحني منظورًا متعدد التخصصات.
-                    </p>
+                </article>
 
-                </div>
-
-                <div class="expertise-grid">
-
-                    <article class="card expertise-card reveal">
-                        <div class="expertise-number">01</div>
-
-                        <h3>
-                            القانون والعلاقات العامة
-                        </h3>
-
-                        <p>
-                            مستشار قانوني وعلاقات عامة، مع اهتمام ببناء
-                            العلاقات وإدارة التواصل وفهم الأبعاد القانونية
-                            والإدارية للمشروعات والأعمال.
-                        </p>
-
-                        <div class="tags">
-                            <span>استشارات</span>
-                            <span>علاقات عامة</span>
-                            <span>تواصل</span>
-                        </div>
-                    </article>
-
-
-                    <article class="card expertise-card reveal">
-                        <div class="expertise-number">02</div>
-
-                        <h3>
-                            ريادة الأعمال
-                        </h3>
-
-                        <p>
-                            رائد أعمال يمني مهتم ببناء المشاريع وتحويل
-                            الأفكار إلى منتجات وخدمات قابلة للتطبيق،
-                            مع التركيز على القيمة والاستدامة.
-                        </p>
-
-                        <div class="tags">
-                            <span>مشاريع</span>
-                            <span>ابتكار</span>
-                            <span>تطوير أعمال</span>
-                        </div>
-                    </article>
-
-
-                    <article class="card expertise-card reveal">
-                        <div class="expertise-number">03</div>
-
-                        <h3>
-                            التقنية والمعلومات
-                        </h3>
-
-                        <p>
-                            خبير في الجانب التقني والمعلوماتي، مع اهتمام
-                            بتطوير الأنظمة الرقمية وفهم البنية التقنية
-                            للمشروعات الحديثة.
-                        </p>
-
-                        <div class="tags">
-                            <span>IT</span>
-                            <span>أنظمة رقمية</span>
-                            <span>تقنية</span>
-                        </div>
-                    </article>
-
-
-                    <article class="card expertise-card reveal">
-                        <div class="expertise-number">04</div>
-
-                        <h3>
-                            الأمن السيبراني
-                        </h3>
-
-                        <p>
-                            خبرة واهتمام متخصص في الأمن السيبراني وحماية
-                            الأنظمة والمعلومات وفهم المخاطر الرقمية
-                            وأساليب التعامل معها.
-                        </p>
-
-                        <div class="tags">
-                            <span>Cybersecurity</span>
-                            <span>أمن المعلومات</span>
-                            <span>حماية الأنظمة</span>
-                        </div>
-                    </article>
-
-
-                    <article class="card expertise-card reveal">
-                        <div class="expertise-number">05</div>
-
-                        <h3>
-                            هندسة الميكاترونكس
-                        </h3>
-
-                        <p>
-                            خبير في هندسة الميكاترونكس، وهي مساحة تجمع
-                            الهندسة الميكانيكية والكهربائية والإلكترونيات
-                            والتحكم والبرمجة.
-                        </p>
-
-                        <div class="tags">
-                            <span>Mechatronics</span>
-                            <span>Automation</span>
-                            <span>Control</span>
-                        </div>
-                    </article>
-
-
-                    <article class="card expertise-card reveal">
-                        <div class="expertise-number">06</div>
-
-                        <h3>
-                            التجارة الإلكترونية
-                        </h3>
-
-                        <p>
-                            ناشط في مجال التجارة الإلكترونية ومهتم ببناء
-                            التجارب والمتاجر الرقمية وتطوير الأعمال
-                            عبر القنوات الإلكترونية.
-                        </p>
-
-                        <div class="tags">
-                            <span>E-Commerce</span>
-                            <span>تجارة رقمية</span>
-                            <span>متاجر إلكترونية</span>
-                        </div>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- Work -->
-        <section
-            class="section"
-            id="work"
-            aria-labelledby="work-title"
-        >
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <div>
-                        <p class="section-kicker">03 · مجالات التطبيق</p>
-                        <h2 id="work-title">من الفكرة إلى الحل</h2>
-                    </div>
-
-                    <p>
-                        أركز على ربط المعرفة النظرية بالتطبيق العملي
-                        وبناء حلول تخدم الأشخاص والمشروعات.
-                    </p>
-
-                </div>
-
-                <div class="projects">
-
-                    <article class="card project reveal">
-
-                        <div class="project-top">
-                            <span>LEGAL / PR</span>
-                            <span>01</span>
-                        </div>
-
-                        <h3>
-                            الاستشارات والتواصل
-                        </h3>
-
-                        <p>
-                            فهم المشكلات من زاوية قانونية وعملية،
-                            والمساعدة في صياغة رؤية واضحة للتواصل
-                            وإدارة العلاقات.
-                        </p>
-
-                    </article>
-
-
-                    <article class="card project reveal">
-
-                        <div class="project-top">
-                            <span>TECH / SECURITY</span>
-                            <span>02</span>
-                        </div>
-
-                        <h3>
-                            الحلول التقنية الآمنة
-                        </h3>
-
-                        <p>
-                            الجمع بين تطوير الأنظمة وفهم الأمن السيبراني
-                            لإنشاء تجارب رقمية أكثر وضوحًا وأمانًا.
-                        </p>
-
-                    </article>
-
-
-                    <article class="card project reveal">
-
-                        <div class="project-top">
-                            <span>ENGINEERING</span>
-                            <span>03</span>
-                        </div>
-
-                        <h3>
-                            التفكير الهندسي
-                        </h3>
-
-                        <p>
-                            تحليل المشكلات بطريقة هندسية وربط الأنظمة
-                            والبرمجيات والإلكترونيات والتحكم للوصول إلى
-                            حلول عملية.
-                        </p>
-
-                    </article>
-
-
-                    <article class="card project reveal">
-
-                        <div class="project-top">
-                            <span>E-COMMERCE</span>
-                            <span>04</span>
-                        </div>
-
-                        <h3>
-                            التجارة والأعمال الرقمية
-                        </h3>
-
-                        <p>
-                            الاهتمام ببناء المشاريع والمتاجر الإلكترونية
-                            وتطوير حضور الأعمال في البيئة الرقمية.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- Contact -->
-        <section
-            class="section contact-section"
-            id="contact"
-            aria-labelledby="contact-title"
-        >
-            <div class="container">
-
-                <div class="contact-card card reveal">
-
-                    <div>
-                        <p class="section-kicker">
-                            04 · تواصل
-                        </p>
-
-                        <h2 id="contact-title">
-                            فكرة تستحق أن تبدأ؟
-                        </h2>
-
-                        <p>
-                            إذا كان لديك مشروع، فكرة، تعاون أو موضوع
-                            يحتاج إلى منظور يجمع بين الأعمال والقانون
-                            والتقنية والهندسة، يمكنك استكشاف أعمالي
-                            والتواصل عبر القنوات المتاحة.
-                        </p>
-                    </div>
-
-                    <div class="contact-actions">
-
-                        <a
-                            class="btn btn-primary"
-                            href="https://github.com/779030103/ameer.alsabri"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            GitHub
-                        </a>
-
-                        <a
-                            class="btn"
-                            href="#home"
-                        >
-                            العودة للأعلى
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer class="site-footer">
-
-        <div class="container footer-inner">
-
-            <div>
-                <strong>أمير الصبري</strong>
-                <span> · جميع الحقوق محفوظة</span>
-            </div>
-
-            <div>
-                AMEER.SYS ·
-                <span id="currentYear"></span>
             </div>
 
         </div>
 
-    </footer>
+    </section>
 
 
-    <button
-        class="back-top"
-        id="backTop"
-        type="button"
-        aria-label="العودة إلى أعلى الصفحة"
-        title="العودة إلى الأعلى"
+    <!-- VISION -->
+    <section
+        class="section journey-section"
+        id="journey"
+        aria-labelledby="journey-title"
     >
-        ↑
-    </button>
+
+        <div class="container">
+
+            <div class="section-intro compact reveal">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <p class="section-kicker">
+                        الرؤية
+                    </p>
+
+                    <h2 id="journey-title">
+                        حين تلتقي
+                        <br>
+                        <strong>العوالم.</strong>
+                    </h2>
+
+                </div>
+
+                <p class="section-lead">
+                    منظور واحد يربط بين القرار، التقنية والتنفيذ.
+                </p>
+
+            </div>
 
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "أمير الصبري",
-        "url": "https://ameer-alsabri.vercel.app/",
-        "image": "https://ameer-alsabri.vercel.app/profile.jpg",
-        "jobTitle": "مستشار قانوني وعلاقات عامة ورائد أعمال",
-        "description": "مستشار قانوني وعلاقات عامة ورائد أعمال يمني وخبير في التقنية والمعلومات والأمن السيبراني وهندسة الميكاترونكس وناشط في التجارة الإلكترونية.",
-        "nationality": "Yemeni",
-        "knowsAbout": [
-            "القانون",
-            "العلاقات العامة",
-            "ريادة الأعمال",
-            "تقنية المعلومات",
-            "الأمن السيبراني",
-            "هندسة الميكاترونكس",
-            "التجارة الإلكترونية"
-        ]
-    }
-    </script>
+            <div class="journey-track">
 
-    <script src="script.js" defer></script>
+                <article class="journey-card reveal">
+
+                    <span>
+                        القانون
+                    </span>
+
+                    <strong>
+                        قرار واعٍ
+                    </strong>
+
+                    <p>
+                        فهم الإطار القانوني والتواصل المسؤول.
+                    </p>
+
+                </article>
+
+
+                <div class="track-symbol reveal">
+                    +
+                </div>
+
+
+                <article class="journey-card reveal reveal-delay-1">
+
+                    <span>
+                        التقنية
+                    </span>
+
+                    <strong>
+                        حل ذكي
+                    </strong>
+
+                    <p>
+                        توظيف التقنية والمعلومات والأمن لصناعة قيمة.
+                    </p>
+
+                </article>
+
+
+                <div class="track-symbol reveal">
+                    +
+                </div>
+
+
+                <article class="journey-card reveal reveal-delay-2">
+
+                    <span>
+                        الهندسة والأعمال
+                    </span>
+
+                    <strong>
+                        تنفيذ فعّال
+                    </strong>
+
+                    <p>
+                        تحويل الفكرة إلى مشروع أو منتج قابل للتطبيق.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="vision-banner reveal">
+
+                <span class="vision-dot"></span>
+
+                <p>
+                    الفكرة تبدأ بسيطة،
+                    <strong>
+                        والتنفيذ يصنع الفرق.
+                    </strong>
+                </p>
+
+                <span class="vision-code">
+                    AMEER / 2026
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section
+        class="section contact-section"
+        id="contact"
+        aria-labelledby="contact-title"
+    >
+
+        <div class="container contact-card reveal">
+
+            <div>
+
+                <p class="section-kicker">
+                    تواصل
+                </p>
+
+                <h2 id="contact-title">
+                    لنبنِ شيئًا
+                    <br>
+                    <strong>يستحق أن يُرى.</strong>
+                </h2>
+
+                <p>
+                    للاطلاع على أعمالي ومشروعاتي التقنية،
+                    يمكنك زيارة مستودعي على GitHub.
+                </p>
+
+            </div>
+
+
+            <div class="contact-actions">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://github.com/779030103/ameer.alsabri"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    زيارة GitHub
+                    <span>↗</span>
+                </a>
+
+                <a
+                    class="btn btn-ghost"
+                    href="#top"
+                >
+                    العودة للأعلى
+                    <span>↑</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+
+    <div class="container footer-inner">
+
+        <div>
+
+            <strong>
+                AMEER SAS
+            </strong>
+
+            <span>
+                Personal Digital Identity · Yemen
+            </span>
+
+        </div>
+
+        <p>
+            جميع الحقوق محفوظة : AMEER SAS 2026 ©
+        </p>
+
+    </div>
+
+</footer>
+
+
+<button
+    class="back-top"
+    id="backTop"
+    type="button"
+    aria-label="العودة إلى أعلى الصفحة"
+>
+    ↑
+</button>
 
 </body>
 </html>
