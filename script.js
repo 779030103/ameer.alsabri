@@ -4,38 +4,31 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       ELEMENTS
-    ========================= */
-
     const body = document.body;
 
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-    const navLinks = Array.from(
-        document.querySelectorAll(".nav-link")
-    );
+    const mainNav =
+        document.getElementById("mainNav");
 
-    const sections = Array.from(
-        document.querySelectorAll("main section[id]")
-    );
+    const navLinks =
+        Array.from(
+            document.querySelectorAll(".nav-link")
+        );
 
-    const revealElements = Array.from(
-        document.querySelectorAll(".reveal")
-    );
+    const sections =
+        Array.from(
+            document.querySelectorAll("main section[id]")
+        );
 
-    const backTop = document.getElementById("backTop");
-    const currentYear = document.getElementById("currentYear");
+    const revealElements =
+        Array.from(
+            document.querySelectorAll(".reveal")
+        );
 
-
-    /* =========================
-       YEAR
-    ========================= */
-
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
-    }
+    const backTop =
+        document.getElementById("backTop");
 
 
     /* =========================
@@ -60,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "إغلاق القائمة"
         );
 
-        menuToggle.innerHTML = '<span aria-hidden="true">×</span>';
+        menuToggle.innerHTML =
+            "<span>×</span>";
 
         body.classList.add("menu-open");
     }
@@ -84,23 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "فتح القائمة"
         );
 
-        menuToggle.innerHTML = '<span aria-hidden="true">☰</span>';
+        menuToggle.innerHTML =
+            "<span>☰</span>";
 
         body.classList.remove("menu-open");
-    }
-
-
-    function toggleMenu() {
-
-        if (!mainNav) {
-            return;
-        }
-
-        if (mainNav.classList.contains("open")) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
     }
 
 
@@ -108,29 +89,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuToggle.addEventListener(
             "click",
-            toggleMenu
+            () => {
+
+                if (
+                    mainNav.classList.contains("open")
+                ) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+
+            }
         );
+
     }
 
 
-    /* =========================
-       CLOSE MENU AFTER CLICK
-    ========================= */
-
     navLinks.forEach((link) => {
 
-        link.addEventListener("click", () => {
-
-            closeMenu();
-
-        });
+        link.addEventListener(
+            "click",
+            closeMenu
+        );
 
     });
 
-
-    /* =========================
-       ESCAPE KEY
-    ========================= */
 
     document.addEventListener(
         "keydown",
@@ -143,11 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-
-    /* =========================
-       CLOSE MENU WHEN CLICKING
-       OUTSIDE IT
-    ========================= */
 
     document.addEventListener(
         "click",
@@ -179,22 +157,20 @@ document.addEventListener("DOMContentLoaded", () => {
        ACTIVE NAVIGATION
     ========================= */
 
-    function setActiveLink(sectionId) {
+    function setActiveLink(id) {
 
         navLinks.forEach((link) => {
 
             const target =
                 link.getAttribute("href");
 
-            const isActive =
-                target === `#${sectionId}`;
-
             link.classList.toggle(
                 "active",
-                isActive
+                target === `#${id}`
             );
 
         });
+
     }
 
 
@@ -206,26 +182,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     entries.forEach((entry) => {
 
-                        if (entry.isIntersecting) {
-
+                        if (
+                            entry.isIntersecting
+                        ) {
                             setActiveLink(
                                 entry.target.id
                             );
-
                         }
 
                     });
 
                 },
                 {
-                    root: null,
-
                     rootMargin:
                         "-30% 0px -55% 0px",
-
                     threshold: 0
                 }
             );
+
 
         sections.forEach((section) => {
 
@@ -237,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       REVEAL ON SCROLL
+       REVEAL ANIMATION
     ========================= */
 
     if (
@@ -251,7 +225,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     entries.forEach((entry) => {
 
-                        if (!entry.isIntersecting) {
+                        if (
+                            !entry.isIntersecting
+                        ) {
                             return;
                         }
 
@@ -267,14 +243,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 },
                 {
-                    root: null,
-
                     rootMargin:
                         "0px 0px -50px 0px",
-
-                    threshold: 0.08
+                    threshold: .08
                 }
             );
+
 
         revealElements.forEach((element) => {
 
@@ -291,6 +265,222 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
+
+    /* =========================
+       INTERACTIVE EXPERTISE
+    ========================= */
+
+    const expertiseData = {
+
+        law: {
+            number: "01",
+            label: "LAW · PUBLIC RELATIONS",
+            title: "القانون والعلاقات العامة",
+            text:
+                "مستشار قانوني وعلاقات عامة، مع اهتمام بفهم الأبعاد القانونية والإدارية وبناء التواصل المهني والعلاقات التي تدعم الأعمال والمشروعات.",
+            tags: [
+                "استشارات",
+                "علاقات عامة",
+                "تواصل مهني"
+            ]
+        },
+
+        business: {
+            number: "02",
+            label: "ENTREPRENEURSHIP",
+            title: "ريادة الأعمال",
+            text:
+                "رائد أعمال يمني مهتم بتحويل الأفكار إلى مشاريع ومنتجات وخدمات عملية، مع التركيز على القيمة والاستدامة وفهم احتياجات السوق.",
+            tags: [
+                "مشاريع",
+                "ابتكار",
+                "تطوير أعمال"
+            ]
+        },
+
+        tech: {
+            number: "03",
+            label: "TECHNOLOGY · INFORMATION",
+            title: "التقنية والمعلومات",
+            text:
+                "اهتمام وخبرة في بناء الحلول الرقمية والتعامل مع التقنية والمعلومات بطريقة عملية، مع التركيز على سهولة الاستخدام والكفاءة.",
+            tags: [
+                "حلول رقمية",
+                "تقنية معلومات",
+                "أنظمة"
+            ]
+        },
+
+        cyber: {
+            number: "04",
+            label: "CYBERSECURITY",
+            title: "الأمن السيبراني",
+            text:
+                "خبرة واهتمام بالمجال الأمني والتقني، وفهم مبادئ حماية الأنظمة والمعلومات والتعامل المسؤول مع المخاطر الرقمية.",
+            tags: [
+                "أمن معلومات",
+                "حماية",
+                "وعي رقمي"
+            ]
+        },
+
+        mechatronics: {
+            number: "05",
+            label: "MECHATRONICS ENGINEERING",
+            title: "هندسة الميكاترونكس",
+            text:
+                "منظور هندسي يجمع بين الأنظمة الميكانيكية والإلكترونية والتحكم والبرمجة، مع اهتمام بتحويل الأفكار الهندسية إلى حلول عملية.",
+            tags: [
+                "هندسة",
+                "تحكم",
+                "أنظمة"
+            ]
+        },
+
+        commerce: {
+            number: "06",
+            label: "E-COMMERCE",
+            title: "التجارة الإلكترونية",
+            text:
+                "ناشط في مجال التجارة الإلكترونية ومهتم ببناء التجارب الرقمية التي تربط المنتجات والعملاء والتقنية بطريقة بسيطة وفعالة.",
+            tags: [
+                "متاجر رقمية",
+                "تجارة إلكترونية",
+                "تجربة العملاء"
+            ]
+        }
+
+    };
+
+
+    const tabs =
+        Array.from(
+            document.querySelectorAll(
+                ".expertise-tab"
+            )
+        );
+
+    const displayNumber =
+        document.getElementById(
+            "displayNumber"
+        );
+
+    const displayLabel =
+        document.getElementById(
+            "displayLabel"
+        );
+
+    const displayTitle =
+        document.getElementById(
+            "displayTitle"
+        );
+
+    const displayText =
+        document.getElementById(
+            "displayText"
+        );
+
+    const displayTags =
+        document.getElementById(
+            "displayTags"
+        );
+
+    const displayLine =
+        document.querySelector(
+            ".display-line span"
+        );
+
+
+    function showExpertise(key) {
+
+        const data =
+            expertiseData[key];
+
+        if (!data) {
+            return;
+        }
+
+
+        tabs.forEach((tab) => {
+
+            const active =
+                tab.dataset.expertise === key;
+
+            tab.classList.toggle(
+                "active",
+                active
+            );
+
+            tab.setAttribute(
+                "aria-selected",
+                String(active)
+            );
+
+        });
+
+
+        if (displayNumber) {
+            displayNumber.textContent =
+                data.number;
+        }
+
+        if (displayLabel) {
+            displayLabel.textContent =
+                data.label;
+        }
+
+        if (displayTitle) {
+            displayTitle.textContent =
+                data.title;
+        }
+
+        if (displayText) {
+
+            displayText.textContent =
+                data.text;
+
+        }
+
+        if (displayTags) {
+
+            displayTags.innerHTML =
+                data.tags
+                    .map(
+                        (tag) =>
+                            `<span>${tag}</span>`
+                    )
+                    .join("");
+
+        }
+
+        if (displayLine) {
+
+            const percentage =
+                (Number(data.number) / 6) * 100;
+
+            displayLine.style.width =
+                `${percentage}%`;
+
+        }
+
+    }
+
+
+    tabs.forEach((tab) => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                showExpertise(
+                    tab.dataset.expertise
+                );
+
+            }
+        );
+
+    });
 
 
     /* =========================
@@ -312,6 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
             backTop.classList.remove("show");
 
         }
+
     }
 
 
@@ -330,16 +521,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                const reduceMotion =
+                const reduced =
                     window.matchMedia(
                         "(prefers-reduced-motion: reduce)"
                     ).matches;
 
                 window.scrollTo({
                     top: 0,
-
                     behavior:
-                        reduceMotion
+                        reduced
                             ? "auto"
                             : "smooth"
                 });
@@ -351,13 +541,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       RESPONSIVE MENU SAFETY
+       RESPONSIVE SAFETY
     ========================= */
 
-    const mobileBreakpoint =
-        window.matchMedia("(max-width: 800px)");
+    const breakpoint =
+        window.matchMedia(
+            "(max-width: 800px)"
+        );
 
-    function handleViewportChange(event) {
+
+    function viewportChanged(event) {
 
         if (!event.matches) {
             closeMenu();
@@ -367,30 +560,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (
-        typeof mobileBreakpoint.addEventListener ===
+        typeof breakpoint.addEventListener ===
         "function"
     ) {
 
-        mobileBreakpoint.addEventListener(
+        breakpoint.addEventListener(
             "change",
-            handleViewportChange
+            viewportChanged
         );
 
     } else if (
-        typeof mobileBreakpoint.addListener ===
+        typeof breakpoint.addListener ===
         "function"
     ) {
 
-        mobileBreakpoint.addListener(
-            handleViewportChange
+        breakpoint.addListener(
+            viewportChanged
         );
 
     }
 
 
-    /* =========================
-       INITIAL STATE
-    ========================= */
+    /* INITIAL */
+
+    showExpertise("law");
 
     updateBackTop();
 
